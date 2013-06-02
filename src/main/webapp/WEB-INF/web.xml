@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
+    <display-name>buji-pac4j-demo</display-name>
+
+    <filter>
+        <filter-name>FacebookFilter</filter-name>
+        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <init-param>
+        	<param-name>clientsFactory</param-name>
+        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
+        </init-param>
+        <init-param>
+        	<param-name>clientName</param-name>
+        	<param-value>FacebookClient</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>FacebookFilter</filter-name>
+        <url-pattern>/facebook/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>TwitterFilter</filter-name>
+        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <init-param>
+        	<param-name>clientsFactory</param-name>
+        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
+        </init-param>
+        <init-param>
+        	<param-name>clientName</param-name>
+        	<param-value>TwitterClient</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>TwitterFilter</filter-name>
+        <url-pattern>/twitter/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>FormFilter</filter-name>
+        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <init-param>
+        	<param-name>clientsFactory</param-name>
+        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
+        </init-param>
+        <init-param>
+        	<param-name>clientName</param-name>
+        	<param-value>FormClient</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>FormFilter</filter-name>
+        <url-pattern>/form/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>BasicAuthFilter</filter-name>
+        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <init-param>
+        	<param-name>clientsFactory</param-name>
+        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
+        </init-param>
+        <init-param>
+        	<param-name>clientName</param-name>
+        	<param-value>BasicAuthClient</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>BasicAuthFilter</filter-name>
+        <url-pattern>/basicauth/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>CasFilter</filter-name>
+        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <init-param>
+        	<param-name>clientsFactory</param-name>
+        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
+        </init-param>
+        <init-param>
+        	<param-name>clientName</param-name>
+        	<param-value>CasClient</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CasFilter</filter-name>
+        <url-pattern>/cas/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>MyOpenIdFilter</filter-name>
+        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <init-param>
+        	<param-name>clientsFactory</param-name>
+        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
+        </init-param>
+        <init-param>
+        	<param-name>clientName</param-name>
+        	<param-value>MyOpenIdClient</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>MyOpenIdFilter</filter-name>
+        <url-pattern>/myopenid/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>CallbackFilter</filter-name>
+        <filter-class>org.pac4j.j2e.filter.CallbackFilter</filter-class>
+        <init-param>
+        	<param-name>clientsFactory</param-name>
+        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
+        </init-param>
+        <init-param>
+        	<param-name>defaultUrl</param-name>
+        	<param-value>/</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CallbackFilter</filter-name>
+        <url-pattern>/callback</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <error-page>
+        <error-code>401</error-code>
+        <location>/error401.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>403</error-code>
+        <location>/error403.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error500.jsp</location>
+    </error-page>
+</web-app>
