@@ -1,3 +1,4 @@
+<%@page import="org.pac4j.j2e.filter.RequiresAuthenticationFilter"%>
 <%@page import="org.pac4j.core.client.Clients"%>
 <%@page import="org.pac4j.j2e.configuration.ClientsConfiguration"%>
 <%@page import="org.pac4j.core.context.WebContext"%>
@@ -8,6 +9,7 @@
 <%@page import="org.pac4j.cas.client.*"%>
 <%@page import="org.pac4j.openid.client.*"%>
 <%
+	session.setAttribute(RequiresAuthenticationFilter.ORIGINAL_REQUESTED_URL, null);
 	WebContext context = new J2EContext(request, response); 
 	Clients client = ClientsConfiguration.getClients();
 	FacebookClient fbClient = (FacebookClient) client.findClient("FacebookClient");
