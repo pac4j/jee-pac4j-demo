@@ -21,7 +21,7 @@
     </repositories>
 
     <properties>
-        <pac4jVersion>1.4.2-SNAPSHOT</pac4jVersion>
+        <pac4jVersion>1.5.0-SNAPSHOT</pac4jVersion>
     </properties>
 
     <dependencies>
@@ -55,11 +55,6 @@
             <groupId>org.pac4j</groupId>
             <artifactId>pac4j-http</artifactId>
             <version>${pac4jVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>1.6.4</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>

@@ -1,8 +1,8 @@
 <%@page import="org.pac4j.j2e.filter.RequiresAuthenticationFilter"%>
 <%@page import="org.pac4j.core.client.Clients"%>
 <%@page import="org.pac4j.j2e.configuration.ClientsConfiguration"%>
-<%@page import="org.pac4j.core.context.WebContext"%>
-<%@page import="org.pac4j.core.context.J2EContext"%>
+<%@page import="org.pac4j.core.context.*"%>
+<%@page import="org.pac4j.core.exception.*"%>
 <%@page import="org.pac4j.j2e.util.UserUtils"%>
 <%@page import="org.pac4j.http.client.*"%>
 <%@page import="org.pac4j.oauth.client.*"%>
@@ -35,12 +35,20 @@
 profile : <%=UserUtils.getProfile(session)%>
 <br /><br />
 <hr />
-<a href="<%=fbClient.getRedirectionUrl(context)%>">Authenticate with Facebook</a><br />
-<a href="<%=twClient.getRedirectionUrl(context)%>">Authenticate with Twitter</a><br />
-<a href="<%=formClient.getRedirectionUrl(context)%>">Authenticate with form</a><br />
-<a href="<%=baClient.getRedirectionUrl(context)%>">Authenticate with basic auth</a><br />
-<a href="<%=casClient.getRedirectionUrl(context)%>">Authenticate with CAS</a><br />
-<form action="<%=myopenidClient.getRedirectionUrl(context)%>" method="POST">
+<%
+try {
+%>
+<a href="<%=fbClient.getRedirectionUrl(context, false, false)%>">Authenticate with Facebook</a><br />
+<a href="<%=twClient.getRedirectionUrl(context, false, false)%>">Authenticate with Twitter</a><br />
+<a href="<%=formClient.getRedirectionUrl(context, false, false)%>">Authenticate with form</a><br />
+<a href="<%=baClient.getRedirectionUrl(context, false, false)%>">Authenticate with basic auth</a><br />
+<a href="<%=casClient.getRedirectionUrl(context, false, false)%>">Authenticate with CAS</a><br />
+<form action="<%=myopenidClient.getRedirectionUrl(context, false, false)%>" method="POST">
   <input type="text" name="openIdUser" value="http://xxx.myopenid.com/" />
   <input type="submit" value="Authenticate with myopenid.com" />
 </form>
+<%
+} catch (RequiresHttpAction e) {
+	// should not happen
+}
+%>
