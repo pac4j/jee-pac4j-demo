@@ -93,24 +93,6 @@
     </filter-mapping>
 
     <filter>
-        <filter-name>MyOpenIdFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
-        <init-param>
-        	<param-name>clientsFactory</param-name>
-        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
-        </init-param>
-        <init-param>
-        	<param-name>clientName</param-name>
-        	<param-value>MyOpenIdClient</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>MyOpenIdFilter</filter-name>
-        <url-pattern>/myopenid/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>
-
-    <filter>
         <filter-name>CallbackFilter</filter-name>
         <filter-class>org.pac4j.j2e.filter.CallbackFilter</filter-class>
         <init-param>

@@ -8,7 +8,6 @@ import org.pac4j.http.credentials.SimpleTestUsernamePasswordAuthenticator;
 import org.pac4j.j2e.configuration.ClientsFactory;
 import org.pac4j.oauth.client.FacebookClient;
 import org.pac4j.oauth.client.TwitterClient;
-import org.pac4j.openid.client.MyOpenIdClient;
 
 public class MyClientsFactory implements ClientsFactory {
     
@@ -27,11 +26,8 @@ public class MyClientsFactory implements ClientsFactory {
         // casClient.setGateway(true);
         casClient.setCasLoginUrl("http://localhost:8888/cas/login");
         
-        // OpenID
-        final MyOpenIdClient myOpenIdClient = new MyOpenIdClient();
-        
         final Clients clients = new Clients("http://localhost:8080/callback", facebookClient, twitterClient,
-                                            formClient, basicAuthClient, casClient, myOpenIdClient);
+                                            formClient, basicAuthClient, casClient);
         return clients;
     }
 }

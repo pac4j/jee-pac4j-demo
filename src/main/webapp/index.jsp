@@ -7,7 +7,6 @@
 <%@page import="org.pac4j.http.client.*"%>
 <%@page import="org.pac4j.oauth.client.*"%>
 <%@page import="org.pac4j.cas.client.*"%>
-<%@page import="org.pac4j.openid.client.*"%>
 <%
 	session.setAttribute(RequiresAuthenticationFilter.ORIGINAL_REQUESTED_URL, null);
 	WebContext context = new J2EContext(request, response); 
@@ -17,7 +16,6 @@
 	FormClient formClient = (FormClient) client.findClient("FormClient");
 	BasicAuthClient baClient = (BasicAuthClient) client.findClient("BasicAuthClient");
 	CasClient casClient = (CasClient) client.findClient("CasClient");
-	MyOpenIdClient myopenidClient = (MyOpenIdClient) client.findClient("MyOpenIdClient");
 %>
 <h1>index</h1>
 <a href="facebook/index.jsp">Protected url by Facebook : facebook/index.jsp</a><br />
@@ -25,10 +23,6 @@
 <a href="form/index.jsp">Protected url by form authentication : form/index.jsp</a><br />
 <a href="basicauth/index.jsp">Protected url by basic auth : basicauth/index.jsp</a><br />
 <a href="cas/index.jsp">Protected url by CAS : cas/index.jsp</a><br />
-<form action="myopenid/index.jsp" method="POST">
-  <input type="text" name="openIdUser" value="http://xxx.myopenid.com/" />
-  <input type="submit" value="Protected url by myopenid.com : myopenid/index.jsp" />
-</form>
 <br />
 <a href="logout.jsp">logout</a>
 <br /><br />
@@ -43,10 +37,6 @@ try {
 <a href="<%=formClient.getRedirectionUrl(context, false, false)%>">Authenticate with form</a><br />
 <a href="<%=baClient.getRedirectionUrl(context, false, false)%>">Authenticate with basic auth</a><br />
 <a href="<%=casClient.getRedirectionUrl(context, false, false)%>">Authenticate with CAS</a><br />
-<form action="<%=myopenidClient.getRedirectionUrl(context, false, false)%>" method="POST">
-  <input type="text" name="openIdUser" value="http://xxx.myopenid.com/" />
-  <input type="submit" value="Authenticate with myopenid.com" />
-</form>
 <%
 } catch (RequiresHttpAction e) {
 	// should not happen
