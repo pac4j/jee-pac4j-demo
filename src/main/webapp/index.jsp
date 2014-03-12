@@ -23,22 +23,16 @@
 <a href="form/index.jsp">Protected url by form authentication : form/index.jsp</a><br />
 <a href="basicauth/index.jsp">Protected url by basic auth : basicauth/index.jsp</a><br />
 <a href="cas/index.jsp">Protected url by CAS : cas/index.jsp</a><br />
+<a href="saml2/index.jsp">Protected url by SAML2 : saml2/index.jsp</a><br />
 <br />
 <a href="logout.jsp">logout</a>
 <br /><br />
 profile : <%=UserUtils.getProfile(session)%>
 <br /><br />
 <hr />
-<%
-try {
-%>
-<a href="<%=fbClient.getRedirectionUrl(context, false, false)%>">Authenticate with Facebook</a><br />
-<a href="<%=twClient.getRedirectionUrl(context, false, false)%>">Authenticate with Twitter</a><br />
-<a href="<%=formClient.getRedirectionUrl(context, false, false)%>">Authenticate with form</a><br />
-<a href="<%=baClient.getRedirectionUrl(context, false, false)%>">Authenticate with basic auth</a><br />
-<a href="<%=casClient.getRedirectionUrl(context, false, false)%>">Authenticate with CAS</a><br />
-<%
-} catch (RequiresHttpAction e) {
-	// should not happen
-}
-%>
+
+<a href="<%=fbClient.getRedirectAction(context).getLocation()%>">Authenticate with Facebook</a><br />
+<a href="<%=twClient.getRedirectAction(context).getLocation()%>">Authenticate with Twitter</a><br />
+<a href="<%=formClient.getRedirectAction(context).getLocation()%>">Authenticate with form</a><br />
+<a href="<%=baClient.getRedirectAction(context).getLocation()%>">Authenticate with basic auth</a><br />
+<a href="<%=casClient.getRedirectAction(context).getLocation()%>">Authenticate with CAS</a><br />

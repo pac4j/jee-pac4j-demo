@@ -3,6 +3,41 @@
     <display-name>buji-pac4j-demo</display-name>
 
     <filter>
+        <filter-name>Saml2Filter</filter-name>
+        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <init-param>
+        	<param-name>clientsFactory</param-name>
+        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
+        </init-param>
+        <init-param>
+        	<param-name>clientName</param-name>
+        	<param-value>Saml2Client</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>Saml2Filter</filter-name>
+        <url-pattern>/saml2/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <filter>
+        <filter-name>Saml2MetadataFilter</filter-name>
+        <filter-class>org.pac4j.j2e.filter.Saml2MetadataFilter</filter-class>
+        <init-param>
+        	<param-name>clientsFactory</param-name>
+        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
+        </init-param>
+        <init-param>
+        	<param-name>clientName</param-name>
+        	<param-value>Saml2Client</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>Saml2MetadataFilter</filter-name>
+        <url-pattern>/saml2-metadata</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    
+    <filter>
         <filter-name>FacebookFilter</filter-name>
         <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
         <init-param>
