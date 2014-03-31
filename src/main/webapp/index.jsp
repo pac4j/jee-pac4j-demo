@@ -7,6 +7,7 @@
 <%@page import="org.pac4j.http.client.*"%>
 <%@page import="org.pac4j.oauth.client.*"%>
 <%@page import="org.pac4j.cas.client.*"%>
+<%@page import="org.pac4j.saml.client.*"%>
 <%
 	session.setAttribute(RequiresAuthenticationFilter.ORIGINAL_REQUESTED_URL, null);
 	WebContext context = new J2EContext(request, response); 
@@ -16,6 +17,7 @@
 	FormClient formClient = (FormClient) client.findClient("FormClient");
 	BasicAuthClient baClient = (BasicAuthClient) client.findClient("BasicAuthClient");
 	CasClient casClient = (CasClient) client.findClient("CasClient");
+	Saml2Client saml2Client = (Saml2Client) client.findClient("Saml2Client");
 %>
 <h1>index</h1>
 <a href="facebook/index.jsp">Protected url by Facebook : facebook/index.jsp</a><br />
@@ -31,8 +33,9 @@ profile : <%=UserUtils.getProfile(session)%>
 <br /><br />
 <hr />
 
-<a href="<%=fbClient.getRedirectAction(context).getLocation()%>">Authenticate with Facebook</a><br />
-<a href="<%=twClient.getRedirectAction(context).getLocation()%>">Authenticate with Twitter</a><br />
-<a href="<%=formClient.getRedirectAction(context).getLocation()%>">Authenticate with form</a><br />
-<a href="<%=baClient.getRedirectAction(context).getLocation()%>">Authenticate with basic auth</a><br />
-<a href="<%=casClient.getRedirectAction(context).getLocation()%>">Authenticate with CAS</a><br />
+<a href="<%=fbClient.getRedirectAction(context, false, false).getLocation()%>">Authenticate with Facebook</a><br />
+<a href="<%=twClient.getRedirectAction(context, false, false).getLocation()%>">Authenticate with Twitter</a><br />
+<a href="<%=formClient.getRedirectAction(context, false, false).getLocation()%>">Authenticate with form</a><br />
+<a href="<%=baClient.getRedirectAction(context, false, false).getLocation()%>">Authenticate with basic auth</a><br />
+<a href="<%=casClient.getRedirectAction(context, false, false).getLocation()%>">Authenticate with CAS</a><br />
+<a href="<%=saml2Client.getRedirectAction(context, false, false).getLocation()%>">Authenticate with SAML</a><br />
