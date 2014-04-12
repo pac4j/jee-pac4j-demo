@@ -24,16 +24,6 @@
         <pac4jVersion>1.5.1-SNAPSHOT</pac4jVersion>
     </properties>
     
-    <dependencyManagement>
-    	<dependencies>
-    		<dependency>
-    			<groupId>org.pac4j</groupId>
-    			<artifactId>pac4j-core</artifactId>
-    			<version>${pac4jVersion}</version>
-    		</dependency>
-    	</dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -44,7 +34,7 @@
         <dependency>
             <groupId>org.pac4j</groupId>
             <artifactId>j2e-pac4j</artifactId>
-            <version>1.0.2</version>
+            <version>1.0.3-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.pac4j</groupId>
