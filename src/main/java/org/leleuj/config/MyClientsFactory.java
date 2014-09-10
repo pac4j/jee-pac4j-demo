@@ -32,6 +32,7 @@ public class MyClientsFactory implements ClientsFactory {
         final CasClient casClient = new CasClient();
         // casClient.setGateway(true);
         casClient.setCasLoginUrl("https://freeuse1.casinthecloud.com/leleujgithub/login");
+        casClient.setCasPrefixUrl("https://freeuse1.casinthecloud.com/leleujgithub/p3");
 
         final Clients clients = new Clients("http://localhost:8080/callback", saml2Client, facebookClient,
                 twitterClient, formClient, basicAuthClient, casClient);
