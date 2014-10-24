@@ -34,7 +34,7 @@
         <dependency>
             <groupId>org.pac4j</groupId>
             <artifactId>j2e-pac4j</artifactId>
-            <version>1.0.4-SNAPSHOT</version>
+            <version>1.0.4</version>
         </dependency>
         <dependency>
             <groupId>org.pac4j</groupId>
