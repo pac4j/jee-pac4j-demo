@@ -1,3 +1,4 @@
+<%@page import="org.pac4j.j2e.util.UserUtils"%>
 <%@page import="com.fasterxml.jackson.core.JsonGenerator"%>
 <%@page import="com.fasterxml.jackson.core.JsonFactory"%>
 <%@page import="org.pac4j.core.context.HttpConstants"%>
@@ -7,5 +8,5 @@
 JsonFactory factory = new JsonFactory();
 factory.disable(JsonGenerator.Feature.AUTO_CLOSE_TARGET);
 ObjectMapper mapper = new ObjectMapper(factory);
-mapper.writeValue(out, request.getAttribute(HttpConstants.USER_PROFILE));
+mapper.writeValue(out, UserUtils.getProfile(request));
 %>

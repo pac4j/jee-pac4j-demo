@@ -9,7 +9,7 @@
 <%@page import="org.pac4j.cas.client.*"%>
 <%@page import="org.pac4j.saml.client.*"%>
 <%
-	session.setAttribute(RequiresAuthenticationFilter.ORIGINAL_REQUESTED_URL, null);
+	session.setAttribute(HttpConstants.REQUESTED_URL, null);
 	WebContext context = new J2EContext(request, response); 
 	Clients client = ClientsConfiguration.getClients();
 	FacebookClient fbClient = (FacebookClient) client.findClient("FacebookClient");
