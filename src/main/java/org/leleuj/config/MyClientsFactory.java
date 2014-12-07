@@ -8,12 +8,18 @@ import org.pac4j.http.credentials.SimpleTestUsernamePasswordAuthenticator;
 import org.pac4j.j2e.configuration.ClientsFactory;
 import org.pac4j.oauth.client.FacebookClient;
 import org.pac4j.oauth.client.TwitterClient;
+import org.pac4j.oidc.client.OidcClient;
 import org.pac4j.saml.client.Saml2Client;
 
 public class MyClientsFactory implements ClientsFactory {
 
     @Override
     public Clients build() {
+        final OidcClient oidcClient = new OidcClient();
+        oidcClient.setClientID("343992089165-sp0l1km383i8cbm2j5nn20kbk5dk8hor.apps.googleusercontent.com");
+        oidcClient.setSecret("uR3D8ej1kIRPbqAFaxIE3HWh");
+        oidcClient.setDiscoveryURI("https://accounts.google.com/.well-known/openid-configuration");
+
         final Saml2Client saml2Client = new Saml2Client();
         saml2Client.setKeystorePath("resource:samlKeystore.jks");
         saml2Client.setKeystorePassword("pac4j-demo-passwd");
@@ -34,7 +40,7 @@ public class MyClientsFactory implements ClientsFactory {
         casClient.setCasLoginUrl("https://freeuse1.casinthecloud.com/leleujgithub/login");
         casClient.setCasPrefixUrl("https://freeuse1.casinthecloud.com/leleujgithub/p3");
 
-        final Clients clients = new Clients("http://localhost:8080/callback", saml2Client, facebookClient,
+        final Clients clients = new Clients("http://localhost:8080/callback", oidcClient, saml2Client, facebookClient,
                 twitterClient, formClient, basicAuthClient, casClient);
         return clients;
     }

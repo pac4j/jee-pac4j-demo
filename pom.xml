@@ -21,7 +21,7 @@
     </repositories>
 
     <properties>
-        <pac4jVersion>1.6.1-SNAPSHOT</pac4jVersion>
+        <pac4jVersion>1.7.0-SNAPSHOT</pac4jVersion>
     </properties>
     
     <dependencies>
@@ -67,6 +67,11 @@
 					<artifactId>slf4j-log4j12</artifactId>
 				</exclusion>
 			</exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.pac4j</groupId>
+            <artifactId>pac4j-oidc</artifactId>
+            <version>${pac4jVersion}</version>
         </dependency>
         <dependency>
             <groupId>org.pac4j</groupId>
