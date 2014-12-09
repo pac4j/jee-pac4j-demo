@@ -7,7 +7,6 @@
   </appender>
 
   <!-- logger name="org.pac4j" level="DEBUG" /-->
-  <logger name="com.nimbusds" level="DEBUG"/>
   
   
   <root level="WARN">
