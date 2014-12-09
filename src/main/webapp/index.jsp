@@ -28,6 +28,7 @@
 <a href="basicauth/index.jsp">Protected url by basic auth : basicauth/index.jsp</a><br />
 <a href="cas/index.jsp">Protected url by CAS : cas/index.jsp</a><br />
 <a href="saml2/index.jsp">Protected url by SAML2 : saml2/index.jsp</a><br />
+<a href="oidc/index.jsp">Protected url by OpenID Connect : oidc/index.jsp</a><br />
 <br />
 <a href="rest-basicauth/user.jsp">REST WS protected by basic auth : rest-basicauth/user.jsp</a><br />
 <br />
