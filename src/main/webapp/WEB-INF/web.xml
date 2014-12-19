@@ -183,6 +183,25 @@
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 
+
+    <filter>
+        <filter-name>StravaFilter</filter-name>
+        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <init-param>
+            <param-name>clientsFactory</param-name>
+            <param-value>org.leleuj.config.MyClientsFactory</param-value>
+        </init-param>
+        <init-param>
+            <param-name>clientName</param-name>
+            <param-value>StravaClient</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>StravaFilter</filter-name>
+        <url-pattern>/strava/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
     <error-page>
         <error-code>401</error-code>
         <location>/error401.jsp</location>
