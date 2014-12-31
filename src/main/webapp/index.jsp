@@ -41,3 +41,4 @@ profile : <%=UserUtils.getProfile(session)%>
 <a href="<%=baClient.getRedirectAction(context, false, false).getLocation()%>">Authenticate with basic auth</a><br />
 <a href="<%=casClient.getRedirectAction(context, false, false).getLocation()%>">Authenticate with CAS</a><br />
 <a href="<%=saml2Client.getRedirectAction(context, false, false).getLocation()%>">Authenticate with SAML</a><br />
+<a href="<%=oidcClient.getRedirectAction(context, false, false).getLocation()%>">Authenticate with OpenID Connect</a><br />
