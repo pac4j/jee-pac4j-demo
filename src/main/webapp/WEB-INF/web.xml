@@ -24,6 +24,23 @@
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
     <filter>
+        <filter-name>OidcFilter</filter-name>
+        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <init-param>
+        	<param-name>clientsFactory</param-name>
+        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
+        </init-param>
+        <init-param>
+        	<param-name>clientName</param-name>
+        	<param-value>OidcClient</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>OidcFilter</filter-name>
+        <url-pattern>/oidc/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <filter>
         <filter-name>Saml2Filter</filter-name>
         <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
         <init-param>
@@ -163,6 +180,25 @@
     <filter-mapping>
         <filter-name>CallbackFilter</filter-name>
         <url-pattern>/callback</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+
+    <filter>
+        <filter-name>StravaFilter</filter-name>
+        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <init-param>
+            <param-name>clientsFactory</param-name>
+            <param-value>org.leleuj.config.MyClientsFactory</param-value>
+        </init-param>
+        <init-param>
+            <param-name>clientName</param-name>
+            <param-value>StravaClient</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>StravaFilter</filter-name>
+        <url-pattern>/strava/*</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 
