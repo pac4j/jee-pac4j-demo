@@ -5,6 +5,7 @@ import org.pac4j.core.client.Clients;
 import org.pac4j.http.client.BasicAuthClient;
 import org.pac4j.http.client.FormClient;
 import org.pac4j.http.credentials.SimpleTestUsernamePasswordAuthenticator;
+import org.pac4j.http.profile.UsernameProfileCreator;
 import org.pac4j.j2e.configuration.ClientsFactory;
 import org.pac4j.oauth.client.FacebookClient;
 import org.pac4j.oauth.client.StravaClient;
@@ -33,8 +34,9 @@ public class MyClientsFactory implements ClientsFactory {
                 "2kAzunH5Btc4gRSaMr7D7MkyoJ5u1VzbOOzE8rBofs");
         // HTTP
         final FormClient formClient = new FormClient("http://localhost:8080/theForm.jsp",
-                new SimpleTestUsernamePasswordAuthenticator());
-        final BasicAuthClient basicAuthClient = new BasicAuthClient(new SimpleTestUsernamePasswordAuthenticator());
+                new SimpleTestUsernamePasswordAuthenticator(), new UsernameProfileCreator());
+        final BasicAuthClient basicAuthClient = new BasicAuthClient(new SimpleTestUsernamePasswordAuthenticator(),
+                new UsernameProfileCreator());
 
         // CAS
         final CasClient casClient = new CasClient();
