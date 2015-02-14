@@ -41,8 +41,8 @@ public class MyClientsFactory implements ClientsFactory {
         // CAS
         final CasClient casClient = new CasClient();
         // casClient.setGateway(true);
-        casClient.setCasLoginUrl("https://freeuse1.casinthecloud.com/leleujgithub/login");
-        casClient.setCasPrefixUrl("https://freeuse1.casinthecloud.com/leleujgithub/p3");
+        casClient.setCasLoginUrl("http://localhost:8888/cas/login");
+        casClient.setCasPrefixUrl("http://localhost:8888/cas/p3");
 
 
         // Strava
