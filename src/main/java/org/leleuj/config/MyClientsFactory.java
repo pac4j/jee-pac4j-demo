@@ -2,11 +2,11 @@ package org.leleuj.config;
 
 import org.pac4j.cas.client.CasClient;
 import org.pac4j.core.client.Clients;
+import org.pac4j.core.client.ClientsFactory;
 import org.pac4j.http.client.BasicAuthClient;
 import org.pac4j.http.client.FormClient;
 import org.pac4j.http.credentials.SimpleTestUsernamePasswordAuthenticator;
 import org.pac4j.http.profile.UsernameProfileCreator;
-import org.pac4j.j2e.configuration.ClientsFactory;
 import org.pac4j.oauth.client.FacebookClient;
 import org.pac4j.oauth.client.StravaClient;
 import org.pac4j.oauth.client.TwitterClient;
@@ -16,7 +16,7 @@ import org.pac4j.saml.client.Saml2Client;
 public class MyClientsFactory implements ClientsFactory {
 
     @Override
-    public Clients build() {
+    public Clients build(final Object env) {
         final OidcClient oidcClient = new OidcClient();
         oidcClient.setClientID("343992089165-sp0l1km383i8cbm2j5nn20kbk5dk8hor.apps.googleusercontent.com");
         oidcClient.setSecret("uR3D8ej1kIRPbqAFaxIE3HWh");
@@ -54,8 +54,7 @@ public class MyClientsFactory implements ClientsFactory {
         stravaClient.setSecret("f03df80582396cddfbe0b895a726bac27c8cf739");
         stravaClient.setScope("view_private");
 
-        final Clients clients = new Clients("http://localhost:8080/callback", oidcClient, saml2Client, facebookClient,
+        return new Clients("http://localhost:8080/callback", oidcClient, saml2Client, facebookClient,
                 twitterClient, formClient, basicAuthClient, casClient, stravaClient);
-        return clients;
     }
 }
