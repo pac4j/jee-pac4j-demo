@@ -1,6 +1,6 @@
 ## What is this project ?
 
-This **j2e-pac4j-demo** project is a Java web application to test the [j2e-pac4j library](https://github.com/leleuj/j2e-pac4j) with Facebook, Twitter, form authentication, basic auth, CAS...  
+This **j2e-pac4j-demo** project is a Java web application to test the [j2e-pac4j library](https://github.com/pac4j/j2e-pac4j) with Facebook, Twitter, form authentication, basic auth, CAS...  
 The **j2e-pac4j** library is built to delegate authentication to a provider and be authenticated back in the protected application with a complete user profile retrieved from the provider.
 
 ## Quick start & test
