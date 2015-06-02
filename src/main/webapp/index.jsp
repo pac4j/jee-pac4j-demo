@@ -18,7 +18,7 @@
 	FormClient formClient = (FormClient) client.findClient("FormClient");
 	BasicAuthClient baClient = (BasicAuthClient) client.findClient("BasicAuthClient");
 	CasClient casClient = (CasClient) client.findClient("CasClient");
-	Saml2Client saml2Client = (Saml2Client) client.findClient("Saml2Client");
+	SAML2Client saml2Client = (SAML2Client) client.findClient("SAML2Client");
 	OidcClient oidcClient = (OidcClient) client.findClient("OidcClient");
     StravaClient stravaClient = (StravaClient) client.findClient("StravaClient");
 %>
