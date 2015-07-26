@@ -1,35 +1,65 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
-    <display-name>buji-pac4j-demo</display-name>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         metadata-complete="true">
+    <display-name>j2e-pac4j-demo</display-name>
 
+    <absolute-ordering/>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:application-context.xml</param-value>
+    </context-param>
+
+    <!--filter>
+        <filter-name>callbackFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter-->
     <filter>
-        <filter-name>RestBasicAuthFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <filter-name>callbackFilter</filter-name>
+        <filter-class>org.pac4j.j2e.filter.CallbackFilter</filter-class>
         <init-param>
-        	<param-name>clientsFactory</param-name>
-        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
+            <param-name>clientsFactory</param-name>
+            <param-value>org.pac4j.demo.j2e.config.DemoClientsFactory</param-value>
         </init-param>
         <init-param>
-        	<param-name>clientName</param-name>
-        	<param-value>BasicAuthClient</param-value>
-        </init-param>
-        <init-param>
-        	<param-name>stateless</param-name>
-        	<param-value>true</param-value>
+            <param-name>defaultUrl</param-name>
+            <param-value>/</param-value>
         </init-param>
     </filter>
     <filter-mapping>
-        <filter-name>RestBasicAuthFilter</filter-name>
-        <url-pattern>/rest-basicauth/*</url-pattern>
+        <filter-name>callbackFilter</filter-name>
+        <url-pattern>/callback</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
+
+    <filter>
+        <filter-name>JwtParameterFilter</filter-name>
+        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <init-param>
+            <param-name>clientName</param-name>
+            <param-value>ParameterClient</param-value>
+        </init-param>
+        <!--
+        <init-param>
+            <param-name>useSessionForDirectClient</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        -->
+    </filter>
+    <filter-mapping>
+        <filter-name>JwtParameterFilter</filter-name>
+        <url-pattern>/rest-jwt/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
     <filter>
         <filter-name>OidcFilter</filter-name>
         <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
-        <init-param>
-        	<param-name>clientsFactory</param-name>
-        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
-        </init-param>
         <init-param>
         	<param-name>clientName</param-name>
         	<param-value>OidcClient</param-value>
@@ -40,13 +70,10 @@
         <url-pattern>/oidc/*</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
+
     <filter>
         <filter-name>Saml2Filter</filter-name>
         <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
-        <init-param>
-        	<param-name>clientsFactory</param-name>
-        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
-        </init-param>
         <init-param>
         	<param-name>clientName</param-name>
         	<param-value>SAML2Client</param-value>
@@ -59,14 +86,10 @@
     </filter-mapping>
     <filter>
         <filter-name>Saml2MetadataFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.Saml2MetadataFilter</filter-class>
-        <init-param>
-        	<param-name>clientsFactory</param-name>
-        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
-        </init-param>
+        <filter-class>org.pac4j.demo.j2e.filter.Saml2MetadataFilter</filter-class>
         <init-param>
         	<param-name>clientName</param-name>
-        	<param-value>Saml2Client</param-value>
+        	<param-value>SAML2Client</param-value>
         </init-param>
     </filter>
     <filter-mapping>
@@ -79,10 +102,6 @@
         <filter-name>FacebookFilter</filter-name>
         <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
         <init-param>
-        	<param-name>clientsFactory</param-name>
-        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
-        </init-param>
-        <init-param>
         	<param-name>clientName</param-name>
         	<param-value>FacebookClient</param-value>
         </init-param>
@@ -94,12 +113,36 @@
     </filter-mapping>
 
     <filter>
-        <filter-name>TwitterFilter</filter-name>
+        <filter-name>FacebookAdminFilter</filter-name>
         <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
         <init-param>
-        	<param-name>clientsFactory</param-name>
-        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
+            <param-name>clientName</param-name>
+            <param-value>FacebookClient</param-value>
         </init-param>
+        <init-param>
+            <param-name>requireAnyRole</param-name>
+            <param-value>ROLE_ADMIN</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>FacebookAdminFilter</filter-name>
+        <url-pattern>/facebookadmin/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>facebookCustomFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>facebookCustomFilter</filter-name>
+        <url-pattern>/facebookcustom/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>TwitterFilter</filter-name>
+        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
         <init-param>
         	<param-name>clientName</param-name>
         	<param-value>TwitterClient</param-value>
@@ -115,10 +158,6 @@
         <filter-name>FormFilter</filter-name>
         <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
         <init-param>
-        	<param-name>clientsFactory</param-name>
-        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
-        </init-param>
-        <init-param>
         	<param-name>clientName</param-name>
         	<param-value>FormClient</param-value>
         </init-param>
@@ -133,12 +172,8 @@
         <filter-name>BasicAuthFilter</filter-name>
         <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
         <init-param>
-        	<param-name>clientsFactory</param-name>
-        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
-        </init-param>
-        <init-param>
         	<param-name>clientName</param-name>
-        	<param-value>BasicAuthClient</param-value>
+        	<param-value>IndirectBasicAuthClient</param-value>
         </init-param>
     </filter>
     <filter-mapping>
@@ -151,10 +186,6 @@
         <filter-name>CasFilter</filter-name>
         <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
         <init-param>
-        	<param-name>clientsFactory</param-name>
-        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
-        </init-param>
-        <init-param>
         	<param-name>clientName</param-name>
         	<param-value>CasClient</param-value>
         </init-param>
@@ -166,31 +197,8 @@
     </filter-mapping>
 
     <filter>
-        <filter-name>CallbackFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.CallbackFilter</filter-class>
-        <init-param>
-        	<param-name>clientsFactory</param-name>
-        	<param-value>org.leleuj.config.MyClientsFactory</param-value>
-        </init-param>
-        <init-param>
-        	<param-name>defaultUrl</param-name>
-        	<param-value>/</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>CallbackFilter</filter-name>
-        <url-pattern>/callback</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-    </filter-mapping>
-
-
-    <filter>
         <filter-name>StravaFilter</filter-name>
         <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
-        <init-param>
-            <param-name>clientsFactory</param-name>
-            <param-value>org.leleuj.config.MyClientsFactory</param-value>
-        </init-param>
         <init-param>
             <param-name>clientName</param-name>
             <param-value>StravaClient</param-value>

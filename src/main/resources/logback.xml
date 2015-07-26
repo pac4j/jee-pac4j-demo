@@ -7,8 +7,7 @@
   </appender>
 
   <!-- logger name="org.pac4j" level="DEBUG" /-->
-  
-  
+
   <root level="WARN">
     <appender-ref ref="STDOUT" />
   </root>

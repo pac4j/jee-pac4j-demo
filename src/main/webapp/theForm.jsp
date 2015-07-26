@@ -1,5 +1,5 @@
 <%@page import="org.pac4j.j2e.configuration.ClientsConfiguration"%>
-<%@page import="org.pac4j.http.client.*"%>
+<%@ page import="org.pac4j.http.client.indirect.FormClient" %>
 <%
 	FormClient formClient = (FormClient) ClientsConfiguration.getClients().findClient("FormClient");
 %>
