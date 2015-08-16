@@ -5,7 +5,6 @@
 	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--bean id="callbackFilter" class="org.pac4j.j2e.filter.CallbackFilter">
-        <property name="clientsFactory" value="org.pac4j.demo.j2e.config.DemoClientsFactory" />
         <property name="defaultUrl" value="/" />
     </bean-->
 

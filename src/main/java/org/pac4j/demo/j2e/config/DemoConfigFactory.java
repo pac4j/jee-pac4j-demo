@@ -2,7 +2,9 @@ package org.pac4j.demo.j2e.config;
 
 import org.pac4j.cas.client.CasClient;
 import org.pac4j.core.client.Clients;
-import org.pac4j.core.client.ClientsFactory;
+import org.pac4j.core.config.Config;
+import org.pac4j.core.config.ConfigFactory;
+import org.pac4j.demo.j2e.authorizer.CustomAuthorizer;
 import org.pac4j.http.client.direct.ParameterClient;
 import org.pac4j.http.client.indirect.FormClient;
 import org.pac4j.http.client.indirect.IndirectBasicAuthClient;
@@ -18,10 +20,10 @@ import org.pac4j.saml.client.SAML2Client;
 import org.pac4j.saml.client.SAML2ClientConfiguration;
 import java.io.File;
 
-public class DemoClientsFactory implements ClientsFactory {
+public class DemoConfigFactory implements ConfigFactory {
 
     @Override
-    public Clients build(final Object env) {
+    public Config build() {
         final OidcClient oidcClient = new OidcClient();
         oidcClient.setClientID("343992089165-sp0l1km383i8cbm2j5nn20kbk5dk8hor.apps.googleusercontent.com");
         oidcClient.setSecret("uR3D8ej1kIRPbqAFaxIE3HWh");
@@ -66,7 +68,11 @@ public class DemoClientsFactory implements ClientsFactory {
         parameterClient.setSupportGetRequest(true);
         parameterClient.setSupportPostRequest(false);
 
-        return new Clients("http://localhost:8080/callback", oidcClient, saml2Client, facebookClient,
+        final Clients clients = new Clients("http://localhost:8080/callback", oidcClient, saml2Client, facebookClient,
                 twitterClient, formClient, basicAuthClient, casClient, stravaClient, parameterClient);
+
+        final Config config = new Config(clients);
+        config.getAuthorizers().put("customAuthorizer", new CustomAuthorizer());
+        return config;
     }
 }

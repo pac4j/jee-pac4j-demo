@@ -8,9 +8,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.pac4j.core.config.ConfigSingleton;
+import org.pac4j.core.context.Pac4jConstants;
 import org.pac4j.core.util.CommonHelper;
-import org.pac4j.j2e.configuration.ClientsConfiguration;
-import org.pac4j.j2e.filter.ClientsConfigFilter;
+import org.pac4j.j2e.filter.AbstractConfigFilter;
 import org.pac4j.saml.client.SAML2Client;
 
 /**
@@ -18,22 +19,21 @@ import org.pac4j.saml.client.SAML2Client;
  * 
  * @author Michael Remond
  */
-public class Saml2MetadataFilter extends ClientsConfigFilter {
+public class Saml2MetadataFilter extends AbstractConfigFilter {
 
     private String clientName;
 
     @Override
     public void init(final FilterConfig filterConfig) throws ServletException {
-        super.init(filterConfig);
-        this.clientName = filterConfig.getInitParameter("clientName");
-        CommonHelper.assertNotBlank("clientName", this.clientName);
+        this.clientName = filterConfig.getInitParameter(Pac4jConstants.CLIENT_NAME);
+        CommonHelper.assertNotBlank(Pac4jConstants.CLIENT_NAME, this.clientName);
     }
 
     @Override
     protected void internalFilter(final HttpServletRequest request, final HttpServletResponse response,
             final FilterChain chain) throws IOException, ServletException {
 
-        SAML2Client client = (SAML2Client) ClientsConfiguration.getClients().findClient(this.clientName);
+        SAML2Client client = (SAML2Client) ConfigSingleton.getConfig().getClients().findClient(this.clientName);
         client.init();
         response.getWriter().write(client.getServiceProviderMetadataResolver().getMetadata());
         response.getWriter().flush();
