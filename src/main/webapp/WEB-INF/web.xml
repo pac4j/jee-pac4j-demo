@@ -15,6 +15,10 @@
         <param-value>classpath:application-context.xml</param-value>
     </context-param>
 
+    <!--filter>
+        <filter-name>callbackFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter-->
     <filter>
         <filter-name>callbackFilter</filter-name>
         <filter-class>org.pac4j.j2e.filter.CallbackFilter</filter-class>
