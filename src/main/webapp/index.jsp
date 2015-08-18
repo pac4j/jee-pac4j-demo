@@ -4,14 +4,14 @@
 <%@page import="org.pac4j.oauth.client.*"%>
 <%@page import="org.pac4j.cas.client.*"%>
 <%@page import="org.pac4j.saml.client.*"%>
-<%@ page import="org.pac4j.j2e.configuration.ClientsConfiguration" %>
 <%@ page import="org.pac4j.http.client.indirect.FormClient" %>
 <%@ page import="org.pac4j.core.profile.ProfileManager" %>
 <%@ page import="org.pac4j.http.client.indirect.IndirectBasicAuthClient" %>
+<%@ page import="org.pac4j.core.config.ConfigSingleton" %>
 <%
 	WebContext context = new J2EContext(request, response);
 	ProfileManager manager = new ProfileManager(context);
-	Clients client = ClientsConfiguration.getClients();
+	Clients client = ConfigSingleton.getConfig().getClients();
 	FacebookClient fbClient = (FacebookClient) client.findClient("FacebookClient");
 	TwitterClient twClient = (TwitterClient) client.findClient("TwitterClient");
 	FormClient formClient = (FormClient) client.findClient("FormClient");
@@ -36,7 +36,7 @@
 <a href="jwt.jsp">Generate a JWT token</a><br />
 <a href="/rest-jwt/index.jsp?token=">Protected url by ParameterClient with JwtAuthenticator: /rest-jwt/index.jsp?token=<em>jwt_generated_token</em></a><br />
 <br />
-<a href="logout.jsp">logout</a>
+<a href="/logout?url=/">logout</a>
 <br /><br />
 profile : <%=manager.get(true)%>
 <br /><br />
