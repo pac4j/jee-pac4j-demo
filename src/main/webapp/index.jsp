@@ -42,11 +42,11 @@ profile : <%=manager.get(true)%>
 <br /><br />
 <hr />
 
-<a href="<%=fbClient.getRedirectAction(context, false, false).getLocation()%>">Authenticate with Facebook</a><br />
-<a href="<%=twClient.getRedirectAction(context, false, false).getLocation()%>">Authenticate with Twitter</a><br />
-<a href="<%=formClient.getRedirectAction(context, false, false).getLocation()%>">Authenticate with form</a><br />
-<a href="<%=baClient.getRedirectAction(context, false, false).getLocation()%>">Authenticate with basic auth</a><br />
-<a href="<%=casClient.getRedirectAction(context, false, false).getLocation()%>">Authenticate with CAS</a><br />
-<a href="<%=saml2Client.getRedirectAction(context, false, false).getLocation()%>">Authenticate with SAML</a><br />
-<a href="<%=oidcClient.getRedirectAction(context, false, false).getLocation()%>">Authenticate with OpenID Connect</a><br />
-<a href="<%=stravaClient.getRedirectAction(context, false, false).getLocation()%>">Authenticate with Strava</a><br />
+<a href="<%=fbClient.getRedirectAction(context, false).getLocation()%>">Authenticate with Facebook</a><br />
+<a href="<%=twClient.getRedirectAction(context, false).getLocation()%>">Authenticate with Twitter</a><br />
+<a href="<%=formClient.getRedirectAction(context, false).getLocation()%>">Authenticate with form</a><br />
+<a href="<%=baClient.getRedirectAction(context, false).getLocation()%>">Authenticate with basic auth</a><br />
+<a href="<%=casClient.getRedirectAction(context, false).getLocation()%>">Authenticate with CAS</a><br />
+<a href="<%=saml2Client.getRedirectAction(context, false).getLocation()%>">Authenticate with SAML</a><br />
+<a href="<%=oidcClient.getRedirectAction(context, false).getLocation()%>">Authenticate with OpenID Connect</a><br />
+<a href="<%=stravaClient.getRedirectAction(context, false).getLocation()%>">Authenticate with Strava</a><br />
