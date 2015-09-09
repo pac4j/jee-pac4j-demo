@@ -1,16 +1,16 @@
 package org.pac4j.demo.j2e.config;
 
 import org.pac4j.cas.client.CasClient;
+import org.pac4j.core.authorization.RequireAnyRoleAuthorizer;
 import org.pac4j.core.client.Clients;
 import org.pac4j.core.config.Config;
 import org.pac4j.core.config.ConfigFactory;
 import org.pac4j.demo.j2e.authorizer.CustomAuthorizer;
+import org.pac4j.http.client.direct.DirectBasicAuthClient;
 import org.pac4j.http.client.direct.ParameterClient;
 import org.pac4j.http.client.indirect.FormClient;
 import org.pac4j.http.client.indirect.IndirectBasicAuthClient;
 import org.pac4j.http.credentials.authenticator.test.SimpleTestUsernamePasswordAuthenticator;
-import org.pac4j.http.profile.creator.AuthenticatorProfileCreator;
-import org.pac4j.http.profile.creator.test.SimpleTestUsernameProfileCreator;
 import org.pac4j.jwt.credentials.authenticator.JwtAuthenticator;
 import org.pac4j.oauth.client.FacebookClient;
 import org.pac4j.oauth.client.StravaClient;
@@ -43,10 +43,8 @@ public class DemoConfigFactory implements ConfigFactory {
         final TwitterClient twitterClient = new TwitterClient("CoxUiYwQOSFDReZYdjigBA",
                 "2kAzunH5Btc4gRSaMr7D7MkyoJ5u1VzbOOzE8rBofs");
         // HTTP
-        final FormClient formClient = new FormClient("http://localhost:8080/theForm.jsp",
-                new SimpleTestUsernamePasswordAuthenticator(), new SimpleTestUsernameProfileCreator());
-        final IndirectBasicAuthClient basicAuthClient = new IndirectBasicAuthClient(new SimpleTestUsernamePasswordAuthenticator(),
-                new SimpleTestUsernameProfileCreator());
+        final FormClient formClient = new FormClient("http://localhost:8080/theForm.jsp", new SimpleTestUsernamePasswordAuthenticator());
+        final IndirectBasicAuthClient indirectBasicAuthClient = new IndirectBasicAuthClient(new SimpleTestUsernamePasswordAuthenticator());
 
         // CAS
         final CasClient casClient = new CasClient();
@@ -64,15 +62,19 @@ public class DemoConfigFactory implements ConfigFactory {
         stravaClient.setScope("view_private");
 
         // REST authent with JWT for a token passed in the url as the token parameter
-        ParameterClient parameterClient = new ParameterClient("token", new JwtAuthenticator(Constants.JWT_SALT), new AuthenticatorProfileCreator());
+        ParameterClient parameterClient = new ParameterClient("token", new JwtAuthenticator(Constants.JWT_SALT));
         parameterClient.setSupportGetRequest(true);
         parameterClient.setSupportPostRequest(false);
 
+        // basic auth
+        final DirectBasicAuthClient directBasicAuthClient = new DirectBasicAuthClient(new SimpleTestUsernamePasswordAuthenticator());
+
         final Clients clients = new Clients("http://localhost:8080/callback", oidcClient, saml2Client, facebookClient,
-                twitterClient, formClient, basicAuthClient, casClient, stravaClient, parameterClient);
+                twitterClient, formClient, indirectBasicAuthClient, casClient, stravaClient, parameterClient, directBasicAuthClient);
 
         final Config config = new Config(clients);
-        config.getAuthorizers().put("customAuthorizer", new CustomAuthorizer());
+        config.addAuthorizer("requireRoleAdmin", new RequireAnyRoleAuthorizer("ROLE_ADMIN"));
+        config.addAuthorizer("customAuthorizer", new CustomAuthorizer());
         return config;
     }
 }
