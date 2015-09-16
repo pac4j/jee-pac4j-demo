@@ -10,7 +10,7 @@
 
     <bean id="facebookCustomFilter" class="org.pac4j.j2e.filter.RequiresAuthenticationFilter">
         <property name="clientName" value="FacebookClient" />
-        <property name="authorizerName" value="customAuthorizer" />
+        <property name="authorizerName" value="custom" />
     </bean>
 
 </beans>
