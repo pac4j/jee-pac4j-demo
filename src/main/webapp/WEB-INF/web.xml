@@ -139,7 +139,7 @@
         </init-param>
         <init-param>
             <param-name>authorizerName</param-name>
-            <param-value>requireRoleAdmin</param-value>
+            <param-value>admin</param-value>
         </init-param>
     </filter>
     <filter-mapping>
@@ -161,7 +161,7 @@
         </init-param>
         <init-param>
             <param-name>authorizerName</param-name>
-            <param-value>customAuthorizer</param-value>
+            <param-value>custom</param-value>
         </init-param>
     </filter>
     <filter-mapping>

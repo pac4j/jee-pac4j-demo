@@ -8,11 +8,9 @@
         <property name="defaultUrl" value="/" />
     </bean-->
 
-    <bean id="customAuthorizer" class="org.pac4j.demo.j2e.authorizer.CustomAuthorizer" />
-
     <bean id="facebookCustomFilter" class="org.pac4j.j2e.filter.RequiresAuthenticationFilter">
         <property name="clientName" value="FacebookClient" />
-        <property name="authorizer" ref="customAuthorizer" />
+        <property name="authorizerName" value="customAuthorizer" />
     </bean>
 
 </beans>

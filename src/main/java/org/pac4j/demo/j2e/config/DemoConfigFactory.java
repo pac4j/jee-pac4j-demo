@@ -73,8 +73,8 @@ public class DemoConfigFactory implements ConfigFactory {
                 twitterClient, formClient, indirectBasicAuthClient, casClient, stravaClient, parameterClient, directBasicAuthClient);
 
         final Config config = new Config(clients);
-        config.addAuthorizer("requireRoleAdmin", new RequireAnyRoleAuthorizer("ROLE_ADMIN"));
-        config.addAuthorizer("customAuthorizer", new CustomAuthorizer());
+        config.addAuthorizer("admin", new RequireAnyRoleAuthorizer("ROLE_ADMIN"));
+        config.addAuthorizer("custom", new CustomAuthorizer());
         return config;
     }
 }
