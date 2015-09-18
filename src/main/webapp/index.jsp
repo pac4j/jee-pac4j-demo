@@ -35,7 +35,7 @@
 <a href="protected/index.jsp">Protected url: protected/index.jsp</a><br />
 <br />
 <a href="jwt.jsp">Generate a JWT token</a><br />
-<a href="/dba/index.jsp">Protected url by DirectBasicAuthClient (POST the <em>Authorization</em> header with value: <em>Basic amxlbGV1OmpsZWxldQ==</em>): /dba/index.jsp</a>  or <a href="/dba/index.jsp?client_name=ParameterClient">by the ParameterClient: /dba/index.jsp?client_name=ParameterClient&token=<em>jwt_generated_token</em><br />
+<a href="/dba/index.jsp">Protected url by DirectBasicAuthClient (POST the <em>Authorization</em> header with value: <em>Basic amxlbGV1OmpsZWxldQ==</em>) then by ParameterClient (with request parameter: token=<em>jwt_generated_token</em>): /dba/index.jsp</a><br />
 <a href="/rest-jwt/index.jsp">Protected url by ParameterClient (with JwtAuthenticator): /rest-jwt/index.jsp?token=<em>jwt_generated_token</em></a><br />
 <br />
 <a href="/logout?url=/">logout</a>

@@ -6,7 +6,7 @@
     </encoder>
   </appender>
 
-  <!-- logger name="org.pac4j" level="DEBUG" /-->
+  <logger name="org.pac4j.j2e" level="DEBUG" />
 
   <root level="WARN">
     <appender-ref ref="STDOUT" />
