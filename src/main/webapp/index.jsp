@@ -25,16 +25,18 @@
 <a href="facebook/index.jsp">Protected url by Facebook: facebook/index.jsp</a><br />
 <a href="facebookadmin/index.jsp">Protected url by Facebook with ROLE_ADMIN: facebookadmin/index.jsp</a><br />
 <a href="facebookcustom/index.jsp">Protected url by Facebook with custom authorizer (= must be a <em>HttpProfile</em> where the username starts with "jle"): facebookcustom/index.jsp</a><br />
-<a href="twitter/index.jsp">Protected url by Twitter: twitter/index.jsp</a><br />
+<a href="twitter/index.jsp">Protected url by Twitter: twitter/index.jsp</a> or <a href="twitter/index.jsp?client_name=FacebookClient">by Facebook: twitter/index.jsp?client_name=FacebookClient</a><br />
 <a href="form/index.jsp">Protected url by form authentication: form/index.jsp</a><br />
-<a href="basicauth/index.jsp">Protected url by basic auth: basicauth/index.jsp</a><br />
+<a href="basicauth/index.jsp">Protected url by indirect basic auth: basicauth/index.jsp</a><br />
 <a href="cas/index.jsp">Protected url by CAS: cas/index.jsp</a><br />
 <a href="saml2/index.jsp">Protected url by SAML2: saml2/index.jsp</a><br />
 <a href="oidc/index.jsp">Protected url by OpenID Connect: oidc/index.jsp</a><br />
 <a href="strava/index.jsp">Protected url by Strava: strava/index.jsp</a><br />
+<a href="protected/index.jsp">Protected url: protected/index.jsp</a><br />
 <br />
 <a href="jwt.jsp">Generate a JWT token</a><br />
-<a href="/rest-jwt/index.jsp?token=">Protected url by ParameterClient with JwtAuthenticator: /rest-jwt/index.jsp?token=<em>jwt_generated_token</em></a><br />
+<a href="/dba/index.jsp">Protected url by DirectBasicAuthClient (POST the <em>Authorization</em> header with value: <em>Basic amxlbGV1OmpsZWxldQ==</em>) then by ParameterClient (with request parameter: token=<em>jwt_generated_token</em>): /dba/index.jsp</a><br />
+<a href="/rest-jwt/index.jsp">Protected url by ParameterClient (with JwtAuthenticator): /rest-jwt/index.jsp?token=<em>jwt_generated_token</em></a><br />
 <br />
 <a href="/logout?url=/">logout</a>
 <br /><br />
