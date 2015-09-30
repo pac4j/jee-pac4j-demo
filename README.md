@@ -6,7 +6,7 @@ This `j2e-pac4j-demo` project is a Java web application to test the [j2e-pac4j](
 
 ## Start & test
 
-Build the project and launch the web app with jetty:
+Build the project and launch the web app with jetty on [http://localhost:8080](http://localhost:8080):
 
     cd j2-pac4j-demo
     mvn clean compile jetty:run
