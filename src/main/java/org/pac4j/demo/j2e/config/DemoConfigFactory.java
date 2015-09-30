@@ -1,6 +1,7 @@
 package org.pac4j.demo.j2e.config;
 
 import org.pac4j.cas.client.CasClient;
+import org.pac4j.cas.logout.CasSingleSignOutHandler;
 import org.pac4j.core.authorization.RequireAnyRoleAuthorizer;
 import org.pac4j.core.client.Clients;
 import org.pac4j.core.config.Config;
@@ -50,7 +51,8 @@ public class DemoConfigFactory implements ConfigFactory {
         final CasClient casClient = new CasClient();
         // casClient.setGateway(true);
         casClient.setCasLoginUrl("http://localhost:8888/cas/login");
-        casClient.setCasPrefixUrl("http://localhost:8888/cas/p3");
+        casClient.setCasProtocol(CasClient.CasProtocol.CAS20);
+        casClient.setLogoutHandler(new CasSingleSignOutHandler());
 
         // Strava
         final StravaClient stravaClient = new StravaClient();
