@@ -113,6 +113,10 @@
         	<param-name>clientName</param-name>
         	<param-value>FacebookClient</param-value>
         </init-param>
+        <init-param>
+            <param-name>excludePath</param-name>
+            <param-value>^/facebook/notprotected\.jsp$</param-value>
+        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>FacebookFilter</filter-name>

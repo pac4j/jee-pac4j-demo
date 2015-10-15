@@ -23,6 +23,7 @@
 %>
 <h1>index</h1>
 <a href="facebook/index.jsp">Protected url by Facebook: facebook/index.jsp</a><br />
+<a href="facebook/notprotected.jsp">Not protected page: facebook/notprotected.jsp</a><br />
 <a href="facebookadmin/index.jsp">Protected url by Facebook with ROLE_ADMIN: facebookadmin/index.jsp</a><br />
 <a href="facebookcustom/index.jsp">Protected url by Facebook with custom authorizer (= must be a <em>HttpProfile</em> where the username starts with "jle"): facebookcustom/index.jsp</a><br />
 <a href="twitter/index.jsp">Protected url by Twitter: twitter/index.jsp</a> or <a href="twitter/index.jsp?client_name=FacebookClient">by Facebook: twitter/index.jsp?client_name=FacebookClient</a><br />
