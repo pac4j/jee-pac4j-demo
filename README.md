@@ -2,7 +2,7 @@
   <img src="https://pac4j.github.io/pac4j/img/logo-j2e.png" width="300" />
 </p>
 
-This `j2e-pac4j-demo` project is a Java web application to test the [j2e-pac4j](https://github.com/pac4j/j2e-pac4j) library with various authentication mechanisms: Facebook, Twitter, form, basic auth, CAS, SAML, OpenID Connect, JWT...
+This `j2e-pac4j-demo` project is a Java web application to test the [j2e-pac4j](https://github.com/pac4j/j2e-pac4j) security library with various authentication mechanisms: Facebook, Twitter, form, basic auth, CAS, SAML, OpenID Connect, JWT...
 
 ## Start & test
 
