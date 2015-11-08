@@ -6,6 +6,7 @@ import org.pac4j.core.authorization.RequireAnyRoleAuthorizer;
 import org.pac4j.core.client.Clients;
 import org.pac4j.core.config.Config;
 import org.pac4j.core.config.ConfigFactory;
+import org.pac4j.core.matching.ExcludedPathMatcher;
 import org.pac4j.demo.j2e.authorizer.CustomAuthorizer;
 import org.pac4j.http.client.direct.DirectBasicAuthClient;
 import org.pac4j.http.client.direct.ParameterClient;
@@ -77,6 +78,8 @@ public class DemoConfigFactory implements ConfigFactory {
         final Config config = new Config(clients);
         config.addAuthorizer("admin", new RequireAnyRoleAuthorizer("ROLE_ADMIN"));
         config.addAuthorizer("custom", new CustomAuthorizer());
+
+        config.addMatcher("excludePath", new ExcludedPathMatcher("^/facebook/notprotected\\.jsp$"));
         return config;
     }
 }
