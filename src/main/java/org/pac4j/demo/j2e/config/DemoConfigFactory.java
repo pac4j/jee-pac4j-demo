@@ -44,15 +44,13 @@ public class DemoConfigFactory implements ConfigFactory {
         final TwitterClient twitterClient = new TwitterClient("CoxUiYwQOSFDReZYdjigBA",
                 "2kAzunH5Btc4gRSaMr7D7MkyoJ5u1VzbOOzE8rBofs");
         // HTTP
-        final FormClient formClient = new FormClient("http://localhost:8080/theForm.jsp", new SimpleTestUsernamePasswordAuthenticator());
+        final FormClient formClient = new FormClient("http://localhost:8080/loginForm.jsp", new SimpleTestUsernamePasswordAuthenticator());
         final IndirectBasicAuthClient indirectBasicAuthClient = new IndirectBasicAuthClient(new SimpleTestUsernamePasswordAuthenticator());
 
         // CAS
         final CasClient casClient = new CasClient();
         // casClient.setGateway(true);
-        casClient.setCasLoginUrl("http://localhost:8888/cas/login");
-        casClient.setCasProtocol(CasClient.CasProtocol.CAS20);
-        casClient.setLogoutHandler(new CasSingleSignOutHandler());
+        casClient.setCasLoginUrl("https://casserverpac4j.herokuapp.com/login");
 
         // Strava
         final StravaClient stravaClient = new StravaClient();

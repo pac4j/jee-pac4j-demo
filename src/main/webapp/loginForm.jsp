@@ -1,7 +1,9 @@
 <%@page import="org.pac4j.core.config.*"%>
 <%@ page import="org.pac4j.http.client.indirect.FormClient" %>
+<%@ page import="org.pac4j.core.context.J2EContext" %>
 <%
-	FormClient formClient = (FormClient) ConfigSingleton.getConfig().getClients().findClient("FormClient");
+	J2EContext context = new J2EContext(request, response);
+	FormClient formClient = (FormClient) ConfigSingleton.getConfig().getClients().findClient(context, "FormClient");
 %>
 <form action="<%=formClient.getCallbackUrl()%>" method="POST">
 	<input type="text" name="username" value="" />
