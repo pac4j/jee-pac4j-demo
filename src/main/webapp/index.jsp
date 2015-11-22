@@ -9,17 +9,17 @@
 <%@ page import="org.pac4j.http.client.indirect.IndirectBasicAuthClient" %>
 <%@ page import="org.pac4j.core.config.ConfigSingleton" %>
 <%
+	Clients client = ConfigSingleton.getConfig().getClients();
+	FacebookClient fbClient = (FacebookClient) client.findClient("FacebookClient");
+	TwitterClient twClient = (TwitterClient) client.findClient("TwitterClient");
+	FormClient formClient = (FormClient) client.findClient("FormClient");
+	IndirectBasicAuthClient baClient = (IndirectBasicAuthClient) client.findClient("IndirectBasicAuthClient");
+	CasClient casClient = (CasClient) client.findClient("CasClient");
+	SAML2Client saml2Client = (SAML2Client) client.findClient("SAML2Client");
+	OidcClient oidcClient = (OidcClient) client.findClient("OidcClient");
+	StravaClient stravaClient = (StravaClient) client.findClient("StravaClient");
 	WebContext context = new J2EContext(request, response);
 	ProfileManager manager = new ProfileManager(context);
-	Clients client = ConfigSingleton.getConfig().getClients();
-	FacebookClient fbClient = (FacebookClient) client.findClient(context, "FacebookClient");
-	TwitterClient twClient = (TwitterClient) client.findClient(context, "TwitterClient");
-	FormClient formClient = (FormClient) client.findClient(context, "FormClient");
-	IndirectBasicAuthClient baClient = (IndirectBasicAuthClient) client.findClient(context, "IndirectBasicAuthClient");
-	CasClient casClient = (CasClient) client.findClient(context, "CasClient");
-	SAML2Client saml2Client = (SAML2Client) client.findClient(context, "SAML2Client");
-	OidcClient oidcClient = (OidcClient) client.findClient(context, "OidcClient");
-	StravaClient stravaClient = (StravaClient) client.findClient(context, "StravaClient");
 %>
 <h1>index</h1>
 <a href="facebook/index.jsp">Protected url by Facebook: facebook/index.jsp</a> (use a real account)<br />

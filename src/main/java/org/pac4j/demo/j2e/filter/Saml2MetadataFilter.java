@@ -34,8 +34,8 @@ public class Saml2MetadataFilter extends AbstractConfigFilter {
     protected void internalFilter(final HttpServletRequest request, final HttpServletResponse response,
             final FilterChain chain) throws IOException, ServletException {
 
+        SAML2Client client = (SAML2Client) ConfigSingleton.getConfig().getClients().findClient(this.clientName);
         final J2EContext context = new J2EContext(request, response);
-        SAML2Client client = (SAML2Client) ConfigSingleton.getConfig().getClients().findClient(context, this.clientName);
         client.init(context);
         response.getWriter().write(client.getServiceProviderMetadataResolver().getMetadata());
         response.getWriter().flush();
