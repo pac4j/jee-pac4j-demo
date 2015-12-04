@@ -34,9 +34,9 @@ public class DemoConfigFactory implements ConfigFactory {
         final SAML2ClientConfiguration cfg = new SAML2ClientConfiguration("resource:samlKeystore.jks",
                                                 "pac4j-demo-passwd",
                                                 "pac4j-demo-passwd",
-                                                "resource:testshib-providers.xml");
+                                                "resource:metadata-okta.xml");
         cfg.setMaximumAuthenticationLifetime(3600);
-        cfg.setServiceProviderEntityId("urn:mace:saml:pac4j.org");
+        cfg.setServiceProviderEntityId("http://localhost:8080/callback?client_name=SAML2Client");
         cfg.setServiceProviderMetadataPath(new File("target", "sp-metadata.xml").getAbsolutePath());
         final SAML2Client saml2Client = new SAML2Client(cfg);
 
