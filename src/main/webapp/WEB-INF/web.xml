@@ -105,7 +105,7 @@
         <url-pattern>/saml2-metadata</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
-    
+
     <filter>
         <filter-name>FacebookFilter</filter-name>
         <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
@@ -114,8 +114,8 @@
         	<param-value>FacebookClient</param-value>
         </init-param>
         <init-param>
-            <param-name>excludePath</param-name>
-            <param-value>^/facebook/notprotected\.jsp$</param-value>
+            <param-name>matcherName</param-name>
+            <param-value>excludedPath</param-value>
         </init-param>
     </filter>
     <filter-mapping>
