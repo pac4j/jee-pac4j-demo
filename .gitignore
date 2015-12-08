@@ -6,3 +6,4 @@ test-output/
 bin/
 j2e-pac4j-demo.iml
 .idea
+sp-metadata.xml
