@@ -1,8 +1,6 @@
 package org.pac4j.demo.j2e.config;
 
-import com.nimbusds.jose.JWSAlgorithm;
 import org.pac4j.cas.client.CasClient;
-import org.pac4j.cas.logout.CasSingleSignOutHandler;
 import org.pac4j.core.authorization.RequireAnyRoleAuthorizer;
 import org.pac4j.core.client.Clients;
 import org.pac4j.core.config.Config;
@@ -21,7 +19,6 @@ import org.pac4j.oauth.client.TwitterClient;
 import org.pac4j.oidc.client.OidcClient;
 import org.pac4j.saml.client.SAML2Client;
 import org.pac4j.saml.client.SAML2ClientConfiguration;
-import java.io.File;
 
 public class DemoConfigFactory implements ConfigFactory {
 
@@ -38,7 +35,7 @@ public class DemoConfigFactory implements ConfigFactory {
         final SAML2ClientConfiguration cfg = new SAML2ClientConfiguration("resource:samlKeystore.jks",
                                                 "pac4j-demo-passwd",
                                                 "pac4j-demo-passwd",
-                                                "resource:metadata-okta.xml");
+                                                "resource:testshib-providers.xml");
         cfg.setMaximumAuthenticationLifetime(3600);
         cfg.setServiceProviderEntityId("http://localhost:8080/callback?client_name=SAML2Client");
         cfg.setServiceProviderMetadataPath("sp-metadata.xml");
