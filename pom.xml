@@ -21,7 +21,7 @@
     </repositories>
 
     <properties>
-        <pac4jVersion>1.8.5-SNAPSHOT</pac4jVersion>
+        <pac4jVersion>1.8.5</pac4jVersion>
         <j2e-pac4j.version>1.2.2-SNAPSHOT</j2e-pac4j.version>
     </properties>
     
