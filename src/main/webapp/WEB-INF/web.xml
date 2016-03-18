@@ -26,6 +26,10 @@
             <param-name>defaultUrl</param-name>
             <param-value>/</param-value>
         </init-param>
+        <init-param>
+            <param-name>multiProfile</param-name>
+            <param-value>true</param-value>
+        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>callbackFilter</filter-name>
@@ -35,13 +39,13 @@
 
     <filter>
         <filter-name>JwtParameterFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
         <init-param>
             <param-name>configFactory</param-name>
-            <param-value>org.pac4j.demo.j2e.config.DemoConfigFactory</param-value>
+            <param-value>org.pac4j.demo.j2e.DemoConfigFactory</param-value>
         </init-param>
         <init-param>
-            <param-name>clientName</param-name>
+            <param-name>clients</param-name>
             <param-value>ParameterClient</param-value>
         </init-param>
     </filter>
@@ -53,10 +57,14 @@
 
     <filter>
         <filter-name>DirectBasicAuthFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
         <init-param>
-            <param-name>clientName</param-name>
+            <param-name>clients</param-name>
             <param-value>DirectBasicAuthClient,ParameterClient</param-value>
+        </init-param>
+        <init-param>
+            <param-name>multiProfile</param-name>
+            <param-value>true</param-value>
         </init-param>
     </filter>
     <filter-mapping>
@@ -67,10 +75,10 @@
 
     <filter>
         <filter-name>OidcFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
         <init-param>
-        	<param-name>clientName</param-name>
-        	<param-value>OidcClient</param-value>
+        	<param-name>clients</param-name>
+        	<param-value>GoogleOidcClient</param-value>
         </init-param>
     </filter>
     <filter-mapping>
@@ -80,10 +88,20 @@
     </filter-mapping>
 
     <filter>
+        <filter-name>ForceLoginFilter</filter-name>
+        <filter-class>org.pac4j.demo.j2e.ForceLoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ForceLoginFilter</filter-name>
+        <url-pattern>/forceLogin</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter>
         <filter-name>Saml2Filter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
         <init-param>
-        	<param-name>clientName</param-name>
+        	<param-name>clients</param-name>
         	<param-value>SAML2Client</param-value>
         </init-param>
     </filter>
@@ -94,11 +112,7 @@
     </filter-mapping>
     <filter>
         <filter-name>Saml2MetadataFilter</filter-name>
-        <filter-class>org.pac4j.demo.j2e.filter.Saml2MetadataFilter</filter-class>
-        <init-param>
-        	<param-name>clientName</param-name>
-        	<param-value>SAML2Client</param-value>
-        </init-param>
+        <filter-class>org.pac4j.demo.j2e.Saml2MetadataFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>Saml2MetadataFilter</filter-name>
@@ -108,13 +122,13 @@
 
     <filter>
         <filter-name>FacebookFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
         <init-param>
-        	<param-name>clientName</param-name>
+        	<param-name>clients</param-name>
         	<param-value>FacebookClient</param-value>
         </init-param>
         <init-param>
-            <param-name>matcherName</param-name>
+            <param-name>matchers</param-name>
             <param-value>excludedPath</param-value>
         </init-param>
     </filter>
@@ -126,7 +140,7 @@
 
     <filter>
         <filter-name>ProtectedFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>ProtectedFilter</filter-name>
@@ -136,13 +150,13 @@
 
     <filter>
         <filter-name>FacebookAdminFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
         <init-param>
-            <param-name>clientName</param-name>
+            <param-name>clients</param-name>
             <param-value>FacebookClient</param-value>
         </init-param>
         <init-param>
-            <param-name>authorizerName</param-name>
+            <param-name>authorizers</param-name>
             <param-value>admin</param-value>
         </init-param>
     </filter>
@@ -158,13 +172,13 @@
     </filter-->
     <filter>
         <filter-name>facebookCustomFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
         <init-param>
-            <param-name>clientName</param-name>
+            <param-name>clients</param-name>
             <param-value>FacebookClient</param-value>
         </init-param>
         <init-param>
-            <param-name>authorizerName</param-name>
+            <param-name>authorizers</param-name>
             <param-value>custom</param-value>
         </init-param>
     </filter>
@@ -176,9 +190,9 @@
 
     <filter>
         <filter-name>TwitterFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
         <init-param>
-        	<param-name>clientName</param-name>
+        	<param-name>clients</param-name>
         	<param-value>TwitterClient,FacebookClient</param-value>
         </init-param>
     </filter>
@@ -190,9 +204,9 @@
 
     <filter>
         <filter-name>FormFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
         <init-param>
-        	<param-name>clientName</param-name>
+        	<param-name>clients</param-name>
         	<param-value>FormClient</param-value>
         </init-param>
     </filter>
@@ -204,9 +218,9 @@
 
     <filter>
         <filter-name>IndirectBasicAuthFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
         <init-param>
-        	<param-name>clientName</param-name>
+        	<param-name>clients</param-name>
         	<param-value>IndirectBasicAuthClient</param-value>
         </init-param>
     </filter>
@@ -218,9 +232,9 @@
 
     <filter>
         <filter-name>CasFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
         <init-param>
-        	<param-name>clientName</param-name>
+        	<param-name>clients</param-name>
         	<param-value>CasClient</param-value>
         </init-param>
     </filter>
@@ -232,9 +246,9 @@
 
     <filter>
         <filter-name>StravaFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.RequiresAuthenticationFilter</filter-class>
+        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
         <init-param>
-            <param-name>clientName</param-name>
+            <param-name>clients</param-name>
             <param-value>StravaClient</param-value>
         </init-param>
     </filter>

@@ -1,12 +1,11 @@
-package org.pac4j.demo.j2e.config;
+package org.pac4j.demo.j2e;
 
 import org.pac4j.cas.client.CasClient;
-import org.pac4j.core.authorization.RequireAnyRoleAuthorizer;
+import org.pac4j.core.authorization.authorizer.RequireAnyRoleAuthorizer;
 import org.pac4j.core.client.Clients;
 import org.pac4j.core.config.Config;
 import org.pac4j.core.config.ConfigFactory;
 import org.pac4j.core.matching.ExcludedPathMatcher;
-import org.pac4j.demo.j2e.authorizer.CustomAuthorizer;
 import org.pac4j.http.client.direct.DirectBasicAuthClient;
 import org.pac4j.http.client.direct.ParameterClient;
 import org.pac4j.http.client.indirect.FormClient;
@@ -16,7 +15,7 @@ import org.pac4j.jwt.credentials.authenticator.JwtAuthenticator;
 import org.pac4j.oauth.client.FacebookClient;
 import org.pac4j.oauth.client.StravaClient;
 import org.pac4j.oauth.client.TwitterClient;
-import org.pac4j.oidc.client.OidcClient;
+import org.pac4j.oidc.client.GoogleOidcClient;
 import org.pac4j.saml.client.SAML2Client;
 import org.pac4j.saml.client.SAML2ClientConfiguration;
 
@@ -24,10 +23,9 @@ public class DemoConfigFactory implements ConfigFactory {
 
     @Override
     public Config build() {
-        final OidcClient oidcClient = new OidcClient();
-        oidcClient.setClientID("343992089165-sp0l1km383i8cbm2j5nn20kbk5dk8hor.apps.googleusercontent.com");
-        oidcClient.setSecret("uR3D8ej1kIRPbqAFaxIE3HWh");
-        oidcClient.setDiscoveryURI("https://accounts.google.com/.well-known/openid-configuration");
+        final GoogleOidcClient oidcClient = new GoogleOidcClient();
+        oidcClient.setClientID("167480702619-8e1lo80dnu8bpk3k0lvvj27noin97vu9.apps.googleusercontent.com");
+        oidcClient.setSecret("MhMme_Ik6IH2JMnAT6MFIfee");
         oidcClient.setUseNonce(true);
         //oidcClient.setPreferredJwsAlgorithm(JWSAlgorithm.RS256);
         oidcClient.addCustomParam("prompt", "consent");
@@ -74,7 +72,7 @@ public class DemoConfigFactory implements ConfigFactory {
                 twitterClient, formClient, indirectBasicAuthClient, casClient, stravaClient, parameterClient, directBasicAuthClient);
 
         final Config config = new Config(clients);
-        config.addAuthorizer("admin", new RequireAnyRoleAuthorizer("ROLE_ADMIN"));
+        config.addAuthorizer("admin", new RequireAnyRoleAuthorizer<>("ROLE_ADMIN"));
         config.addAuthorizer("custom", new CustomAuthorizer());
         config.addMatcher("excludedPath", new ExcludedPathMatcher("^/facebook/notprotected\\.jsp$"));
         return config;
