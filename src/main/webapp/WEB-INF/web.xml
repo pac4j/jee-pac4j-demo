@@ -48,6 +48,10 @@
             <param-name>clients</param-name>
             <param-value>ParameterClient</param-value>
         </init-param>
+        <init-param>
+            <param-name>authorizers</param-name>
+            <param-value>securityHeaders</param-value>
+        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>JwtParameterFilter</filter-name>
@@ -66,6 +70,10 @@
             <param-name>multiProfile</param-name>
             <param-value>true</param-value>
         </init-param>
+        <init-param>
+            <param-name>authorizers</param-name>
+            <param-value>securityHeaders</param-value>
+        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>DirectBasicAuthFilter</filter-name>
@@ -79,6 +87,10 @@
         <init-param>
         	<param-name>clients</param-name>
         	<param-value>GoogleOidcClient</param-value>
+        </init-param>
+        <init-param>
+            <param-name>authorizers</param-name>
+            <param-value>securityHeaders</param-value>
         </init-param>
     </filter>
     <filter-mapping>
@@ -104,6 +116,10 @@
         	<param-name>clients</param-name>
         	<param-value>SAML2Client</param-value>
         </init-param>
+        <init-param>
+            <param-name>authorizers</param-name>
+            <param-value>securityHeaders</param-value>
+        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>Saml2Filter</filter-name>
@@ -128,6 +144,10 @@
         	<param-value>FacebookClient</param-value>
         </init-param>
         <init-param>
+            <param-name>authorizers</param-name>
+            <param-value>securityHeaders</param-value>
+        </init-param>
+        <init-param>
             <param-name>matchers</param-name>
             <param-value>excludedPath</param-value>
         </init-param>
@@ -141,6 +161,10 @@
     <filter>
         <filter-name>ProtectedFilter</filter-name>
         <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <init-param>
+            <param-name>authorizers</param-name>
+            <param-value>securityHeaders</param-value>
+        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>ProtectedFilter</filter-name>
@@ -157,7 +181,7 @@
         </init-param>
         <init-param>
             <param-name>authorizers</param-name>
-            <param-value>admin</param-value>
+            <param-value>admin,securityHeaders</param-value>
         </init-param>
     </filter>
     <filter-mapping>
@@ -179,7 +203,7 @@
         </init-param>
         <init-param>
             <param-name>authorizers</param-name>
-            <param-value>custom</param-value>
+            <param-value>custom,securityHeaders</param-value>
         </init-param>
     </filter>
     <filter-mapping>
@@ -195,6 +219,10 @@
         	<param-name>clients</param-name>
         	<param-value>TwitterClient,FacebookClient</param-value>
         </init-param>
+        <init-param>
+            <param-name>authorizers</param-name>
+            <param-value>securityHeaders</param-value>
+        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>TwitterFilter</filter-name>
@@ -208,6 +236,10 @@
         <init-param>
         	<param-name>clients</param-name>
         	<param-value>FormClient</param-value>
+        </init-param>
+        <init-param>
+            <param-name>authorizers</param-name>
+            <param-value>securityHeaders</param-value>
         </init-param>
     </filter>
     <filter-mapping>
@@ -223,6 +255,10 @@
         	<param-name>clients</param-name>
         	<param-value>IndirectBasicAuthClient</param-value>
         </init-param>
+        <init-param>
+            <param-name>authorizers</param-name>
+            <param-value>securityHeaders</param-value>
+        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>IndirectBasicAuthFilter</filter-name>
@@ -237,6 +273,10 @@
         	<param-name>clients</param-name>
         	<param-value>CasClient</param-value>
         </init-param>
+        <init-param>
+            <param-name>authorizers</param-name>
+            <param-value>securityHeaders</param-value>
+        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>CasFilter</filter-name>
@@ -250,6 +290,10 @@
         <init-param>
             <param-name>clients</param-name>
             <param-value>StravaClient</param-value>
+        </init-param>
+        <init-param>
+            <param-name>authorizers</param-name>
+            <param-value>securityHeaders</param-value>
         </init-param>
     </filter>
     <filter-mapping>
