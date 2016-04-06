@@ -15,6 +15,42 @@
         <param-value>classpath:application-context.xml</param-value>
     </context-param>
 
+    <filter>
+        <filter-name>indexFilter</filter-name>
+        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <init-param>
+            <param-name>clients</param-name>
+            <param-value>AnonymousClient</param-value>
+        </init-param>
+        <init-param>
+            <param-name>authorizers</param-name>
+            <param-value>securityHeaders</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>indexFilter</filter-name>
+        <url-pattern>/</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>mustBeAnonFilter</filter-name>
+        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <init-param>
+            <param-name>clients</param-name>
+            <param-value>AnonymousClient</param-value>
+        </init-param>
+        <init-param>
+            <param-name>authorizers</param-name>
+            <param-value>mustBeAnon</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>mustBeAnonFilter</filter-name>
+        <url-pattern>/loginForm.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
     <!--filter>
         <filter-name>callbackFilter</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -305,6 +341,10 @@
     <filter>
         <filter-name>logoutFilter</filter-name>
         <filter-class>org.pac4j.j2e.filter.ApplicationLogoutFilter</filter-class>
+        <init-param>
+            <param-name>defaultUrl</param-name>
+            <param-value>/?defaulturlafterlogout</param-value>
+        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>logoutFilter</filter-name>

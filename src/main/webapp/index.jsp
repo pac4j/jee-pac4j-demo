@@ -24,6 +24,6 @@
 <br />
 <a href="forceLogin?client_name=FacebookClient">Force Facebook login</a> (even if already authenticated)<br />
 <br />
-<a href="/logout?url=/">logout</a>
+<a href="/logout?url=/?forcepostlogouturl">logout</a>
 <br /><br />
 profiles: <%=manager.getAll(true)%>

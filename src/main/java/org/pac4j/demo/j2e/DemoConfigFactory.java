@@ -1,8 +1,10 @@
 package org.pac4j.demo.j2e;
 
 import org.pac4j.cas.client.CasClient;
+import org.pac4j.core.authorization.authorizer.IsAnonymousAuthorizer;
 import org.pac4j.core.authorization.authorizer.RequireAnyRoleAuthorizer;
 import org.pac4j.core.client.Clients;
+import org.pac4j.core.client.direct.AnonymousClient;
 import org.pac4j.core.config.Config;
 import org.pac4j.core.config.ConfigFactory;
 import org.pac4j.core.matching.ExcludedPathMatcher;
@@ -69,11 +71,13 @@ public class DemoConfigFactory implements ConfigFactory {
         final DirectBasicAuthClient directBasicAuthClient = new DirectBasicAuthClient(new SimpleTestUsernamePasswordAuthenticator());
 
         final Clients clients = new Clients("http://localhost:8080/callback", oidcClient, saml2Client, facebookClient,
-                twitterClient, formClient, indirectBasicAuthClient, casClient, stravaClient, parameterClient, directBasicAuthClient);
+                twitterClient, formClient, indirectBasicAuthClient, casClient, stravaClient, parameterClient,
+                directBasicAuthClient, new AnonymousClient());
 
         final Config config = new Config(clients);
         config.addAuthorizer("admin", new RequireAnyRoleAuthorizer<>("ROLE_ADMIN"));
         config.addAuthorizer("custom", new CustomAuthorizer());
+        config.addAuthorizer("mustBeAnon", new IsAnonymousAuthorizer<>("/?mustBeAnon"));
         config.addMatcher("excludedPath", new ExcludedPathMatcher("^/facebook/notprotected\\.jsp$"));
         return config;
     }
