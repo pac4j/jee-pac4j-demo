@@ -1,12 +1,21 @@
 package org.pac4j.demo.j2e;
 
 import org.apache.commons.lang3.StringUtils;
-import org.pac4j.core.authorization.authorizer.SingleProfileAuthorizer;
+import org.pac4j.core.authorization.authorizer.ProfileAuthorizer;
 import org.pac4j.core.context.WebContext;
+import org.pac4j.core.exception.RequiresHttpAction;
 import org.pac4j.core.profile.CommonProfile;
 
-public class CustomAuthorizer extends SingleProfileAuthorizer<CommonProfile> {
+import java.util.List;
 
+public class CustomAuthorizer extends ProfileAuthorizer<CommonProfile> {
+
+    @Override
+    public boolean isAuthorized(final WebContext context, final List<CommonProfile> profiles) throws RequiresHttpAction {
+        return isAnyAuthorized(context, profiles);
+    }
+
+    @Override
     public boolean isProfileAuthorized(final WebContext context, final CommonProfile profile) {
         if (profile == null) {
             return false;
