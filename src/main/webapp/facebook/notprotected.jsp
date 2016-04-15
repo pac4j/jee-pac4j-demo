@@ -7,4 +7,4 @@
     J2EContext context = new J2EContext(request, response);
     ProfileManager manager = new ProfileManager(context);
 %>
-profile: <%=manager.get(true)%><br />
+profiles: <%=manager.getAll(true)%><br />
