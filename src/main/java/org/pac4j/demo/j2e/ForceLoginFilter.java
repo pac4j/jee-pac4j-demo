@@ -4,7 +4,7 @@ import org.pac4j.core.client.Client;
 import org.pac4j.core.client.Clients;
 import org.pac4j.core.config.ConfigSingleton;
 import org.pac4j.core.context.J2EContext;
-import org.pac4j.core.exception.RequiresHttpAction;
+import org.pac4j.core.exception.HttpAction;
 import org.pac4j.j2e.filter.AbstractConfigFilter;
 
 import javax.servlet.FilterChain;
@@ -28,7 +28,7 @@ public class ForceLoginFilter extends AbstractConfigFilter {
         final Client client = ConfigSingleton.getConfig().getClients().findClient(request.getParameter(Clients.DEFAULT_CLIENT_NAME_PARAMETER));
         try {
             client.redirect(context);
-        } catch (final RequiresHttpAction e) {
+        } catch (final HttpAction e) {
         }
     }
 }
