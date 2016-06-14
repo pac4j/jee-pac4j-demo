@@ -363,10 +363,6 @@
             <param-name>defaultUrl</param-name>
             <param-value>/?defaulturlafterlogout</param-value>
         </init-param>
-        <init-param>
-            <param-name>logoutUrlPattern</param-name>
-            <param-value></param-value>
-        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>logoutFilter</filter-name>
