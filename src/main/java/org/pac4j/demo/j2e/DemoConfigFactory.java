@@ -32,6 +32,8 @@ public class DemoConfigFactory implements ConfigFactory {
         oidcClient.setUseNonce(true);
         //oidcClient.setPreferredJwsAlgorithm(JWSAlgorithm.RS256);
         oidcClient.addCustomParam("prompt", "consent");
+        oidcClient.setAuthorizationGenerator(profile -> profile.addRole("ROLE_ADMIN"));
+
 
         final SAML2ClientConfiguration cfg = new SAML2ClientConfiguration("resource:samlKeystore.jks",
                                                 "pac4j-demo-passwd",

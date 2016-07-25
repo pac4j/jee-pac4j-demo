@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.pac4j.demo</groupId>
     <artifactId>j2e-pac4j-demo</artifactId>
-    <version>1.3.0-SNAPSHOT</version>
+    <version>1.3.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>j2e-pac4j demo</name>
 
@@ -21,11 +21,11 @@
     </repositories>
 
     <properties>
-        <pac4jVersion>1.9.0</pac4jVersion>
-        <j2e-pac4j.version>1.3.0</j2e-pac4j.version>
+        <pac4jVersion>1.9.1</pac4jVersion>
+        <j2e-pac4j.version>1.3.1-SNAPSHOT</j2e-pac4j.version>
         <java.version>1.8</java.version>
     </properties>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.pac4j</groupId>
