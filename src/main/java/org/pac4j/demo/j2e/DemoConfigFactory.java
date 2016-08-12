@@ -1,6 +1,7 @@
 package org.pac4j.demo.j2e;
 
 import org.pac4j.cas.client.CasClient;
+import org.pac4j.cas.client.CasProxyReceptor;
 import org.pac4j.cas.client.direct.DirectCasClient;
 import org.pac4j.cas.config.CasConfiguration;
 import org.pac4j.core.authorization.authorizer.IsAnonymousAuthorizer;
@@ -56,10 +57,13 @@ public class DemoConfigFactory implements ConfigFactory {
         // CAS
         //final CasConfiguration configuration = new CasConfiguration("https://casserverpac4j.herokuapp.com/login");
         final CasConfiguration configuration = new CasConfiguration("http://localhost:8888/cas/login");
-        // configuration.setGateway(true);
+        /*final CasConfiguration configuration = new CasConfiguration("http://localhost:8888/cas/login");
+        CasProxyReceptor casProxy = new CasProxyReceptor();
+        configuration.setProxyReceptor(casProxy);*/
         final CasClient casClient = new CasClient(configuration);
-        //final DirectCasClient casClient = new DirectCasClient(configuration);
-        casClient.setName("CasClient");
+
+        /*final DirectCasClient casClient = new DirectCasClient(configuration);
+        casClient.setName("CasClient");*/
 
         // Strava
         final StravaClient stravaClient = new StravaClient();
@@ -80,7 +84,7 @@ public class DemoConfigFactory implements ConfigFactory {
 
         final Clients clients = new Clients("http://localhost:8080/callback", oidcClient, saml2Client, facebookClient,
                 twitterClient, formClient, indirectBasicAuthClient, casClient, stravaClient, parameterClient,
-                directBasicAuthClient, new AnonymousClient());
+                directBasicAuthClient, new AnonymousClient()); //, casProxy);
 
         final Config config = new Config(clients);
         config.addAuthorizer("admin", new RequireAnyRoleAuthorizer<>("ROLE_ADMIN"));

@@ -67,6 +67,10 @@
             <param-value>/</param-value>
         </init-param>
         <init-param>
+            <param-name>renewSession</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <init-param>
             <param-name>multiProfile</param-name>
             <param-value>true</param-value>
         </init-param>
