@@ -26,4 +26,5 @@
 <br />
 <a href="/logout?url=/?forcepostlogouturl">logout</a>
 <br /><br />
+sessionId: <%=session.getId()%><br />
 profiles: <%=manager.getAll(true)%>

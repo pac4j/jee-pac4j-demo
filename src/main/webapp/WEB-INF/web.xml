@@ -8,6 +8,10 @@
     <absolute-ordering/>
 
     <listener>
+        <listener-class>org.pac4j.demo.j2e.MySessionListener</listener-class>
+    </listener>
+
+    <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
     <context-param>
@@ -65,6 +69,10 @@
         <init-param>
             <param-name>multiProfile</param-name>
             <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>renewSession</param-name>
+            <param-value>false</param-value>
         </init-param>
     </filter>
     <filter-mapping>

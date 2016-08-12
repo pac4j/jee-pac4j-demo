@@ -1,5 +1,6 @@
 package org.pac4j.demo.j2e;
 
+import org.pac4j.cas.client.CasClient;
 import org.pac4j.cas.client.direct.DirectCasClient;
 import org.pac4j.cas.config.CasConfiguration;
 import org.pac4j.core.authorization.authorizer.IsAnonymousAuthorizer;
@@ -53,10 +54,11 @@ public class DemoConfigFactory implements ConfigFactory {
         final IndirectBasicAuthClient indirectBasicAuthClient = new IndirectBasicAuthClient(new SimpleTestUsernamePasswordAuthenticator());
 
         // CAS
-        final CasConfiguration configuration = new CasConfiguration("https://casserverpac4j.herokuapp.com/login");
+        //final CasConfiguration configuration = new CasConfiguration("https://casserverpac4j.herokuapp.com/login");
+        final CasConfiguration configuration = new CasConfiguration("http://localhost:8888/cas/login");
         // configuration.setGateway(true);
-        //final CasClient casClient = new CasClient(configuration);
-        final DirectCasClient casClient = new DirectCasClient(configuration);
+        final CasClient casClient = new CasClient(configuration);
+        //final DirectCasClient casClient = new DirectCasClient(configuration);
         casClient.setName("CasClient");
 
         // Strava
