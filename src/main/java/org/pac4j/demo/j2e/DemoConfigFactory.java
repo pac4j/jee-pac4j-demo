@@ -21,6 +21,7 @@ import org.pac4j.oauth.client.FacebookClient;
 import org.pac4j.oauth.client.StravaClient;
 import org.pac4j.oauth.client.TwitterClient;
 import org.pac4j.oidc.client.GoogleOidcClient;
+import org.pac4j.oidc.config.OidcConfiguration;
 import org.pac4j.saml.client.SAML2Client;
 import org.pac4j.saml.client.SAML2ClientConfiguration;
 
@@ -28,14 +29,14 @@ public class DemoConfigFactory implements ConfigFactory {
 
     @Override
     public Config build() {
-        final GoogleOidcClient oidcClient = new GoogleOidcClient();
-        oidcClient.setClientID("167480702619-8e1lo80dnu8bpk3k0lvvj27noin97vu9.apps.googleusercontent.com");
-        oidcClient.setSecret("MhMme_Ik6IH2JMnAT6MFIfee");
-        oidcClient.setUseNonce(true);
+        final OidcConfiguration oidcConfiguration = new OidcConfiguration();
+        oidcConfiguration.setClientId("167480702619-8e1lo80dnu8bpk3k0lvvj27noin97vu9.apps.googleusercontent.com");
+        oidcConfiguration.setSecret("MhMme_Ik6IH2JMnAT6MFIfee");
+        oidcConfiguration.setUseNonce(true);
         //oidcClient.setPreferredJwsAlgorithm(JWSAlgorithm.RS256);
-        oidcClient.addCustomParam("prompt", "consent");
+        oidcConfiguration.addCustomParam("prompt", "consent");
+        final GoogleOidcClient oidcClient = new GoogleOidcClient(oidcConfiguration);
         oidcClient.setAuthorizationGenerator(profile -> profile.addRole("ROLE_ADMIN"));
-
 
         final SAML2ClientConfiguration cfg = new SAML2ClientConfiguration("resource:samlKeystore.jks",
                                                 "pac4j-demo-passwd",
@@ -54,8 +55,7 @@ public class DemoConfigFactory implements ConfigFactory {
         final IndirectBasicAuthClient indirectBasicAuthClient = new IndirectBasicAuthClient(new SimpleTestUsernamePasswordAuthenticator());
 
         // CAS
-        //final CasConfiguration configuration = new CasConfiguration("https://casserverpac4j.herokuapp.com/login");
-        final CasConfiguration configuration = new CasConfiguration("http://localhost:8888/cas/login");
+        final CasConfiguration configuration = new CasConfiguration("https://casserverpac4j.herokuapp.com/login");
         //final CasConfiguration configuration = new CasConfiguration("http://localhost:8888/cas/login");
         final CasProxyReceptor casProxy = new CasProxyReceptor();
         configuration.setProxyReceptor(casProxy);
@@ -83,7 +83,7 @@ public class DemoConfigFactory implements ConfigFactory {
 
         final Clients clients = new Clients("http://localhost:8080/callback", oidcClient, saml2Client, facebookClient,
                 twitterClient, formClient, indirectBasicAuthClient, casClient, stravaClient, parameterClient,
-                directBasicAuthClient, new AnonymousClient(), casProxy);
+                directBasicAuthClient, new AnonymousClient()); //, casProxy);
 
         final Config config = new Config(clients);
         config.addAuthorizer("admin", new RequireAnyRoleAuthorizer<>("ROLE_ADMIN"));
