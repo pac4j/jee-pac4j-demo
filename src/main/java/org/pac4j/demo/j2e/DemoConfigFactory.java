@@ -25,6 +25,8 @@ import org.pac4j.oidc.config.OidcConfiguration;
 import org.pac4j.saml.client.SAML2Client;
 import org.pac4j.saml.client.SAML2ClientConfiguration;
 
+import java.io.File;
+
 public class DemoConfigFactory implements ConfigFactory {
 
     @Override
@@ -44,7 +46,7 @@ public class DemoConfigFactory implements ConfigFactory {
                                                 "resource:testshib-providers.xml");
         cfg.setMaximumAuthenticationLifetime(3600);
         cfg.setServiceProviderEntityId("http://localhost:8080/callback?client_name=SAML2Client");
-        cfg.setServiceProviderMetadataPath("sp-metadata.xml");
+        cfg.setServiceProviderMetadataPath(new File("sp-metadata.xml").getAbsolutePath());
         final SAML2Client saml2Client = new SAML2Client(cfg);
 
         final FacebookClient facebookClient = new FacebookClient("145278422258960", "be21409ba8f39b5dae2a7de525484da8");
