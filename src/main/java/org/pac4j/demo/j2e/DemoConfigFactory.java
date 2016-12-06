@@ -16,6 +16,8 @@ import org.pac4j.http.client.direct.ParameterClient;
 import org.pac4j.http.client.indirect.FormClient;
 import org.pac4j.http.client.indirect.IndirectBasicAuthClient;
 import org.pac4j.http.credentials.authenticator.test.SimpleTestUsernamePasswordAuthenticator;
+import org.pac4j.jwt.config.signature.SecretSignatureConfiguration;
+import org.pac4j.jwt.config.signature.SignatureConfiguration;
 import org.pac4j.jwt.credentials.authenticator.JwtAuthenticator;
 import org.pac4j.oauth.client.FacebookClient;
 import org.pac4j.oauth.client.StravaClient;
@@ -26,6 +28,8 @@ import org.pac4j.saml.client.SAML2Client;
 import org.pac4j.saml.client.SAML2ClientConfiguration;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DemoConfigFactory implements ConfigFactory {
 
@@ -76,7 +80,9 @@ public class DemoConfigFactory implements ConfigFactory {
         stravaClient.setScope("view_private");
 
         // REST authent with JWT for a token passed in the url as the token parameter
-        ParameterClient parameterClient = new ParameterClient("token", new JwtAuthenticator(Constants.JWT_SALT));
+        final List<SignatureConfiguration> signatures = new ArrayList<>();
+        signatures.add(new SecretSignatureConfiguration(Constants.JWT_SALT));
+        ParameterClient parameterClient = new ParameterClient("token", new JwtAuthenticator(signatures));
         parameterClient.setSupportGetRequest(true);
         parameterClient.setSupportPostRequest(false);
 
