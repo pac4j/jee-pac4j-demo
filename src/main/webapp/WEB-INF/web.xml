@@ -382,6 +382,32 @@
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
 
+    <filter>
+        <filter-name>centralLogoutFilter</filter-name>
+        <filter-class>org.pac4j.j2e.filter.LogoutFilter</filter-class>
+        <init-param>
+            <param-name>defaultUrl</param-name>
+            <param-value>/?defaulturlafterlogoutafteridp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>localLogout</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <init-param>
+            <param-name>centralLogout</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>logoutUrlPattern</param-name>
+            <param-value>http://localhost:8080/.*</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>centralLogoutFilter</filter-name>
+        <url-pattern>/centralLogout</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
     <error-page>
         <error-code>401</error-code>
         <location>/error401.jsp</location>

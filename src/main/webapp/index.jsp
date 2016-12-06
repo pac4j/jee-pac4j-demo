@@ -24,7 +24,10 @@
 <br />
 <a href="forceLogin?client_name=FacebookClient">Force Facebook login</a> (even if already authenticated)<br />
 <br />
-<a href="/logout?url=/?forcepostlogouturl">logout</a>
+<a href="/logout?url=/?forcepostlogouturl">local logout</a><br />
+<br />
+<a href="/centralLogout?url=http://localhost:8080/?forcepostlogouturlafteridp">central logout</a>
 <br /><br />
-sessionId: <%=session.getId()%><br />
-profiles: <%=manager.getAll(true)%>
+profiles: <%=manager.getAll(true)%><br />
+<br />
+sessionId: <%=session.getId()%>
