@@ -91,7 +91,7 @@ public class DemoConfigFactory implements ConfigFactory {
 
         final Clients clients = new Clients("http://localhost:8080/callback", oidcClient, saml2Client, facebookClient,
                 twitterClient, formClient, indirectBasicAuthClient, casClient, stravaClient, parameterClient,
-                directBasicAuthClient, new AnonymousClient()); //, casProxy);
+                directBasicAuthClient, new AnonymousClient(), casProxy);
 
         final Config config = new Config(clients);
         config.addAuthorizer("admin", new RequireAnyRoleAuthorizer<>("ROLE_ADMIN"));
