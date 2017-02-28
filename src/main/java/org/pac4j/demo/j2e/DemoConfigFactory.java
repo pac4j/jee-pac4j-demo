@@ -10,7 +10,7 @@ import org.pac4j.core.client.Clients;
 import org.pac4j.core.client.direct.AnonymousClient;
 import org.pac4j.core.config.Config;
 import org.pac4j.core.config.ConfigFactory;
-import org.pac4j.core.matching.ExcludedPathMatcher;
+import org.pac4j.core.matching.PathMatcher;
 import org.pac4j.http.client.direct.DirectBasicAuthClient;
 import org.pac4j.http.client.direct.ParameterClient;
 import org.pac4j.http.client.indirect.FormClient;
@@ -42,7 +42,7 @@ public class DemoConfigFactory implements ConfigFactory {
         //oidcClient.setPreferredJwsAlgorithm(JWSAlgorithm.RS256);
         oidcConfiguration.addCustomParam("prompt", "consent");
         final GoogleOidcClient oidcClient = new GoogleOidcClient(oidcConfiguration);
-        oidcClient.setAuthorizationGenerator(profile -> profile.addRole("ROLE_ADMIN"));
+        oidcClient.setAuthorizationGenerator((ctx, profile) -> { profile.addRole("ROLE_ADMIN"); return profile; });
 
         final SAML2ClientConfiguration cfg = new SAML2ClientConfiguration("resource:samlKeystore.jks",
                                                 "pac4j-demo-passwd",
@@ -54,8 +54,7 @@ public class DemoConfigFactory implements ConfigFactory {
         final SAML2Client saml2Client = new SAML2Client(cfg);
 
         final FacebookClient facebookClient = new FacebookClient("145278422258960", "be21409ba8f39b5dae2a7de525484da8");
-        final TwitterClient twitterClient = new TwitterClient("CoxUiYwQOSFDReZYdjigBA",
-                "2kAzunH5Btc4gRSaMr7D7MkyoJ5u1VzbOOzE8rBofs");
+        final TwitterClient twitterClient = new TwitterClient("CoxUiYwQOSFDReZYdjigBA", "2kAzunH5Btc4gRSaMr7D7MkyoJ5u1VzbOOzE8rBofs");
         // HTTP
         final FormClient formClient = new FormClient("http://localhost:8080/loginForm.jsp", new SimpleTestUsernamePasswordAuthenticator());
         final IndirectBasicAuthClient indirectBasicAuthClient = new IndirectBasicAuthClient(new SimpleTestUsernamePasswordAuthenticator());
@@ -98,7 +97,7 @@ public class DemoConfigFactory implements ConfigFactory {
         config.addAuthorizer("custom", new CustomAuthorizer());
         config.addAuthorizer("mustBeAnon", new IsAnonymousAuthorizer<>("/?mustBeAnon"));
         config.addAuthorizer("mustBeAuth", new IsAuthenticatedAuthorizer<>("/?mustBeAuth"));
-        config.addMatcher("excludedPath", new ExcludedPathMatcher("^/facebook/notprotected\\.jsp$"));
+        config.addMatcher("excludedPath", new PathMatcher().excludeRegex("^/facebook/notprotected\\.jsp$"));
         return config;
     }
 }

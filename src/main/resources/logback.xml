@@ -9,6 +9,8 @@
   <logger name="org.pac4j.j2e" level="DEBUG" />
   <logger name="org.pac4j.core.engine" level="DEBUG" />
   <logger name="org.pac4j.cas" level="DEBUG" />
+  <!--logger name="org.pac4j.saml" level="DEBUG" />
+  <logger name="org.opensaml" level="DEBUG" /-->
 
   <root level="WARN">
     <appender-ref ref="STDOUT" />
