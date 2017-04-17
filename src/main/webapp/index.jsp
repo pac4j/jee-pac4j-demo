@@ -1,4 +1,5 @@
-<%@page import="org.pac4j.core.context.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="org.pac4j.core.context.*" %>
 <%@ page import="org.pac4j.core.profile.ProfileManager" %>
 <%
 	WebContext context = new J2EContext(request, response);
@@ -24,9 +25,9 @@
 <br />
 <a href="forceLogin?client_name=FacebookClient">Force Facebook login</a> (even if already authenticated)<br />
 <br />
-<a href="/logout?url=/?forcepostlogouturl">local logout</a><br />
-<br />
-<a href="/centralLogout?url=http://localhost:8080/?forcepostlogouturlafteridp">central logout</a>
+<a href="logout?url=<c:url value="/?forcepostlogouturl"/>">local logout</a>
+<br /><br />
+<a href="centralLogout?url=<c:url value="/?forcepostlogouturlafteridp"/>">central logout</a>
 <br /><br />
 profiles: <%=manager.getAll(true)%><br />
 <br />
