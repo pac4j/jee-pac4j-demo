@@ -22,7 +22,7 @@
 
     <properties>
         <pac4jVersion>2.0.0</pac4jVersion>
-        <j2e-pac4j.version>2.0.0</j2e-pac4j.version>
+        <j2e-pac4j.version>2.1.0-SNAPSHOT</j2e-pac4j.version>
         <java.version>1.8</java.version>
     </properties>
 
