@@ -377,7 +377,7 @@
             <param-value>/?defaulturlafterlogout</param-value>
         </init-param>
         <init-param>
-            <param-name>killSession</param-name>
+            <param-name>destroySession</param-name>
             <param-value>true</param-value>
         </init-param>
     </filter>
