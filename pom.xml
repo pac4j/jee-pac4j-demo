@@ -21,7 +21,7 @@
     </repositories>
 
     <properties>
-        <pac4jVersion>2.0.0</pac4jVersion>
+        <pac4jVersion>2.1.0</pac4jVersion>
         <j2e-pac4j.version>3.0.0-SNAPSHOT</j2e-pac4j.version>
         <java.version>1.8</java.version>
     </properties>
@@ -94,7 +94,12 @@
         </dependency>
         <dependency>
             <groupId>org.pac4j</groupId>
-            <artifactId>pac4j-stormpath</artifactId>
+            <artifactId>pac4j-kerberos</artifactId>
+            <version>${pac4jVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.pac4j</groupId>
+            <artifactId>pac4j-couch</artifactId>
             <version>${pac4jVersion}</version>
         </dependency>
         <dependency>
