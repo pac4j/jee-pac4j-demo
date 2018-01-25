@@ -3,6 +3,7 @@ package org.pac4j.demo.j2e;
 import org.pac4j.cas.client.CasClient;
 import org.pac4j.cas.client.CasProxyReceptor;
 import org.pac4j.cas.config.CasConfiguration;
+import org.pac4j.cas.logout.DefaultCasLogoutHandler;
 import org.pac4j.core.authorization.authorizer.IsAnonymousAuthorizer;
 import org.pac4j.core.authorization.authorizer.IsAuthenticatedAuthorizer;
 import org.pac4j.core.authorization.authorizer.RequireAnyRoleAuthorizer;
@@ -62,6 +63,9 @@ public class DemoConfigFactory implements ConfigFactory {
         // CAS
         //final CasConfiguration configuration = new CasConfiguration("https://casserverpac4j.herokuapp.com/login");
         final CasConfiguration configuration = new CasConfiguration("http://localhost:8888/cas/login");
+        final DefaultCasLogoutHandler defaultCasLogoutHandler = new DefaultCasLogoutHandler();
+        defaultCasLogoutHandler.setDestroySession(true);
+        configuration.setLogoutHandler(defaultCasLogoutHandler);
         final CasProxyReceptor casProxy = new CasProxyReceptor();
         configuration.setProxyReceptor(casProxy);
         final CasClient casClient = new CasClient(configuration);

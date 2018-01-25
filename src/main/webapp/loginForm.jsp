@@ -3,7 +3,7 @@
 <%
 	FormClient formClient = (FormClient) ConfigSingleton.getConfig().getClients().findClient("FormClient");
 %>
-<form action="<%=formClient.getCallbackUrl()%>" method="POST">
+<form action="<%=formClient.getCallbackUrl()%>?client_name=FormClient" method="POST">
 	<input type="text" name="username" value="" />
 	<p />
 	<input type="password" name="password" value="" />
