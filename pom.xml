@@ -21,8 +21,8 @@
     </repositories>
 
     <properties>
-        <pac4jVersion>3.0.0-RC1</pac4jVersion>
-        <j2e-pac4j.version>4.0.0-RC1</j2e-pac4j.version>
+        <pac4jVersion>3.0.0-RC2-SNAPSHOT</pac4jVersion>
+        <j2e-pac4j.version>4.0.0-RC2-SNAPSHOT</j2e-pac4j.version>
         <java.version>1.8</java.version>
     </properties>
 
