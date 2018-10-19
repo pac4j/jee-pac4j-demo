@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.pac4j.demo</groupId>
     <artifactId>j2e-pac4j-demo</artifactId>
-    <version>4.0.0-SNAPSHOT</version>
+    <version>4.1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>j2e-pac4j demo</name>
 
@@ -21,9 +21,10 @@
     </repositories>
 
     <properties>
-        <pac4jVersion>3.0.0</pac4jVersion>
-        <j2e-pac4j.version>4.0.0</j2e-pac4j.version>
+        <pac4jVersion>3.3.0</pac4jVersion>
+        <j2e-pac4j.version>4.1.0-SNAPSHOT</j2e-pac4j.version>
         <java.version>1.8</java.version>
+        <spring.version>5.1.1.RELEASE</spring.version>
     </properties>
 
     <dependencies>
@@ -35,7 +36,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>4.1.7.RELEASE</version>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.pac4j</groupId>
