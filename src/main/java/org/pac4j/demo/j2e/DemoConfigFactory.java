@@ -3,7 +3,6 @@ package org.pac4j.demo.j2e;
 import org.pac4j.cas.client.CasClient;
 import org.pac4j.cas.client.CasProxyReceptor;
 import org.pac4j.cas.config.CasConfiguration;
-import org.pac4j.cas.logout.DefaultCasLogoutHandler;
 import org.pac4j.core.authorization.authorizer.IsAnonymousAuthorizer;
 import org.pac4j.core.authorization.authorizer.IsAuthenticatedAuthorizer;
 import org.pac4j.core.authorization.authorizer.RequireAnyRoleAuthorizer;
@@ -11,6 +10,7 @@ import org.pac4j.core.client.Clients;
 import org.pac4j.core.client.direct.AnonymousClient;
 import org.pac4j.core.config.Config;
 import org.pac4j.core.config.ConfigFactory;
+import org.pac4j.core.logout.handler.DefaultLogoutHandler;
 import org.pac4j.core.matching.PathMatcher;
 import org.pac4j.http.client.direct.DirectBasicAuthClient;
 import org.pac4j.http.client.direct.ParameterClient;
@@ -26,7 +26,7 @@ import org.pac4j.oauth.client.TwitterClient;
 import org.pac4j.oidc.client.GoogleOidcClient;
 import org.pac4j.oidc.config.OidcConfiguration;
 import org.pac4j.saml.client.SAML2Client;
-import org.pac4j.saml.client.SAML2ClientConfiguration;
+import org.pac4j.saml.config.SAML2Configuration;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class DemoConfigFactory implements ConfigFactory {
         final GoogleOidcClient oidcClient = new GoogleOidcClient(oidcConfiguration);
         oidcClient.setAuthorizationGenerator((ctx, profile) -> { profile.addRole("ROLE_ADMIN"); return profile; });
 
-        final SAML2ClientConfiguration cfg = new SAML2ClientConfiguration("resource:samlKeystore.jks",
+        final SAML2Configuration cfg = new SAML2Configuration("resource:samlKeystore.jks",
                                                 "pac4j-demo-passwd",
                                                 "pac4j-demo-passwd",
                                                 "resource:testshib-providers.xml");
@@ -63,7 +63,7 @@ public class DemoConfigFactory implements ConfigFactory {
         // CAS
         //final CasConfiguration configuration = new CasConfiguration("https://casserverpac4j.herokuapp.com/login");
         final CasConfiguration configuration = new CasConfiguration("http://localhost:8888/cas/login");
-        final DefaultCasLogoutHandler defaultCasLogoutHandler = new DefaultCasLogoutHandler();
+        final DefaultLogoutHandler defaultCasLogoutHandler = new DefaultLogoutHandler();
         defaultCasLogoutHandler.setDestroySession(true);
         configuration.setLogoutHandler(defaultCasLogoutHandler);
         final CasProxyReceptor casProxy = new CasProxyReceptor();
