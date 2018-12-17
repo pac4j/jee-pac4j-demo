@@ -2,7 +2,7 @@
 <%@ page import="org.pac4j.core.context.*" %>
 <%@ page import="org.pac4j.core.profile.ProfileManager" %>
 <%
-	WebContext context = new J2EContext(request, response);
+	WebContext context = new JEEContext(request, response);
 	ProfileManager manager = new ProfileManager(context);
 %>
 <h1>index</h1>

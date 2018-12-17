@@ -2,11 +2,11 @@
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-      <pattern>J2E PAC4J DEMO %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+      <pattern>JEE PAC4J DEMO %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
     </encoder>
   </appender>
 
-  <logger name="org.pac4j.j2e" level="DEBUG" />
+  <logger name="org.pac4j.jee" level="DEBUG" />
   <logger name="org.pac4j.core.engine" level="DEBUG" />
   <logger name="org.pac4j.cas" level="DEBUG" />
   <!--logger name="org.pac4j.saml" level="DEBUG" />

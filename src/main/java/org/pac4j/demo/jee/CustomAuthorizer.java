@@ -1,4 +1,4 @@
-package org.pac4j.demo.j2e;
+package org.pac4j.demo.jee;
 
 import org.apache.commons.lang3.StringUtils;
 import org.pac4j.core.authorization.authorizer.ProfileAuthorizer;

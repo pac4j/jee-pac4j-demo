@@ -1,4 +1,4 @@
-package org.pac4j.demo.j2e;
+package org.pac4j.demo.jee;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.pac4j.core.config.ConfigSingleton;
-import org.pac4j.j2e.filter.AbstractConfigFilter;
+import org.pac4j.jee.filter.AbstractConfigFilter;
 import org.pac4j.saml.client.SAML2Client;
 
 /**

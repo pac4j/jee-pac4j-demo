@@ -1,11 +1,11 @@
-package org.pac4j.demo.j2e;
+package org.pac4j.demo.jee;
 
 import org.pac4j.core.client.Client;
 import org.pac4j.core.config.ConfigSingleton;
-import org.pac4j.core.context.J2EContext;
+import org.pac4j.core.context.JEEContext;
 import org.pac4j.core.context.Pac4jConstants;
 import org.pac4j.core.exception.HttpAction;
-import org.pac4j.j2e.filter.AbstractConfigFilter;
+import org.pac4j.jee.filter.AbstractConfigFilter;
 
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -24,7 +24,7 @@ public class ForceLoginFilter extends AbstractConfigFilter {
     protected void internalFilter(final HttpServletRequest request, final HttpServletResponse response,
             final FilterChain chain) throws IOException, ServletException {
 
-        final J2EContext context = new J2EContext(request, response);
+        final JEEContext context = new JEEContext(request, response);
         final Client client = ConfigSingleton.getConfig().getClients().findClient(request.getParameter(Pac4jConstants.DEFAULT_CLIENT_NAME_PARAMETER));
         try {
             client.redirect(context);

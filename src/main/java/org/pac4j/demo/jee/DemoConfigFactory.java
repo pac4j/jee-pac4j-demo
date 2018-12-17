@@ -1,4 +1,4 @@
-package org.pac4j.demo.j2e;
+package org.pac4j.demo.jee;
 
 import org.pac4j.cas.client.CasClient;
 import org.pac4j.cas.client.CasProxyReceptor;

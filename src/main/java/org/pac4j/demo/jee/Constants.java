@@ -1,4 +1,4 @@
-package org.pac4j.demo.j2e;
+package org.pac4j.demo.jee;
 
 public interface Constants {
 

@@ -3,12 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          metadata-complete="true">
-    <display-name>j2e-pac4j-demo</display-name>
+    <display-name>jee-pac4j-demo</display-name>
 
     <absolute-ordering/>
 
     <listener>
-        <listener-class>org.pac4j.demo.j2e.MySessionListener</listener-class>
+        <listener-class>org.pac4j.demo.jee.MySessionListener</listener-class>
     </listener>
 
     <listener>
@@ -21,7 +21,7 @@
 
     <filter>
         <filter-name>indexFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.SecurityFilter</filter-class>
         <init-param>
             <param-name>clients</param-name>
             <param-value>AnonymousClient</param-value>
@@ -44,7 +44,7 @@
 
     <filter>
         <filter-name>mustBeAnonFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.SecurityFilter</filter-class>
         <init-param>
             <param-name>clients</param-name>
             <param-value>AnonymousClient</param-value>
@@ -66,7 +66,7 @@
     </filter-->
     <filter>
         <filter-name>callbackFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.CallbackFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.CallbackFilter</filter-class>
         <init-param>
             <param-name>defaultUrl</param-name>
             <param-value>/</param-value>
@@ -88,10 +88,10 @@
 
     <filter>
         <filter-name>JwtParameterFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.SecurityFilter</filter-class>
         <init-param>
             <param-name>configFactory</param-name>
-            <param-value>org.pac4j.demo.j2e.DemoConfigFactory</param-value>
+            <param-value>org.pac4j.demo.jee.DemoConfigFactory</param-value>
         </init-param>
         <init-param>
             <param-name>clients</param-name>
@@ -110,7 +110,7 @@
 
     <filter>
         <filter-name>DirectBasicAuthFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.SecurityFilter</filter-class>
         <init-param>
             <param-name>clients</param-name>
             <param-value>DirectBasicAuthClient,ParameterClient</param-value>
@@ -132,7 +132,7 @@
 
     <filter>
         <filter-name>OidcFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.SecurityFilter</filter-class>
         <init-param>
         	<param-name>clients</param-name>
         	<param-value>GoogleOidcClient</param-value>
@@ -150,7 +150,7 @@
 
     <filter>
         <filter-name>ForceLoginFilter</filter-name>
-        <filter-class>org.pac4j.demo.j2e.ForceLoginFilter</filter-class>
+        <filter-class>org.pac4j.demo.jee.ForceLoginFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>ForceLoginFilter</filter-name>
@@ -160,7 +160,7 @@
 
     <filter>
         <filter-name>Saml2Filter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.SecurityFilter</filter-class>
         <init-param>
         	<param-name>clients</param-name>
         	<param-value>SAML2Client</param-value>
@@ -177,7 +177,7 @@
     </filter-mapping>
     <filter>
         <filter-name>Saml2MetadataFilter</filter-name>
-        <filter-class>org.pac4j.demo.j2e.Saml2MetadataFilter</filter-class>
+        <filter-class>org.pac4j.demo.jee.Saml2MetadataFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>Saml2MetadataFilter</filter-name>
@@ -187,7 +187,7 @@
 
     <filter>
         <filter-name>FacebookFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.SecurityFilter</filter-class>
         <init-param>
         	<param-name>clients</param-name>
         	<param-value>FacebookClient</param-value>
@@ -209,7 +209,7 @@
 
     <filter>
         <filter-name>ProtectedFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.SecurityFilter</filter-class>
         <init-param>
             <param-name>authorizers</param-name>
             <param-value>securityHeaders</param-value>
@@ -223,7 +223,7 @@
 
     <filter>
         <filter-name>FacebookAdminFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.SecurityFilter</filter-class>
         <init-param>
             <param-name>clients</param-name>
             <param-value>FacebookClient</param-value>
@@ -245,7 +245,7 @@
     </filter-->
     <filter>
         <filter-name>facebookCustomFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.SecurityFilter</filter-class>
         <init-param>
             <param-name>clients</param-name>
             <param-value>FacebookClient</param-value>
@@ -263,7 +263,7 @@
 
     <filter>
         <filter-name>TwitterFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.SecurityFilter</filter-class>
         <init-param>
         	<param-name>clients</param-name>
         	<param-value>TwitterClient,FacebookClient</param-value>
@@ -281,7 +281,7 @@
 
     <filter>
         <filter-name>FormFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.SecurityFilter</filter-class>
         <init-param>
         	<param-name>clients</param-name>
         	<param-value>FormClient</param-value>
@@ -299,7 +299,7 @@
 
     <filter>
         <filter-name>IndirectBasicAuthFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.SecurityFilter</filter-class>
         <init-param>
         	<param-name>clients</param-name>
         	<param-value>IndirectBasicAuthClient</param-value>
@@ -317,7 +317,7 @@
 
     <filter>
         <filter-name>CasFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.SecurityFilter</filter-class>
         <init-param>
         	<param-name>clients</param-name>
         	<param-value>CasClient</param-value>
@@ -335,7 +335,7 @@
 
     <filter>
         <filter-name>StravaFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.SecurityFilter</filter-class>
         <init-param>
             <param-name>clients</param-name>
             <param-value>StravaClient</param-value>
@@ -353,7 +353,7 @@
 
     <filter>
         <filter-name>mustBeAuthFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.SecurityFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.SecurityFilter</filter-class>
         <init-param>
             <param-name>clients</param-name>
             <param-value>AnonymousClient</param-value>
@@ -371,7 +371,7 @@
 
     <filter>
         <filter-name>logoutFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.LogoutFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.LogoutFilter</filter-class>
         <init-param>
             <param-name>defaultUrl</param-name>
             <param-value>/?defaulturlafterlogout</param-value>
@@ -389,7 +389,7 @@
 
     <filter>
         <filter-name>centralLogoutFilter</filter-name>
-        <filter-class>org.pac4j.j2e.filter.LogoutFilter</filter-class>
+        <filter-class>org.pac4j.jee.filter.LogoutFilter</filter-class>
         <init-param>
             <param-name>defaultUrl</param-name>
             <param-value>http://localhost:8080/?defaulturlafterlogoutafteridp</param-value>
