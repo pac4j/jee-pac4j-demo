@@ -61,13 +61,13 @@ public class DemoConfigFactory implements ConfigFactory {
         final IndirectBasicAuthClient indirectBasicAuthClient = new IndirectBasicAuthClient(new SimpleTestUsernamePasswordAuthenticator());
 
         // CAS
-        //final CasConfiguration configuration = new CasConfiguration("https://casserverpac4j.herokuapp.com/login");
-        final CasConfiguration configuration = new CasConfiguration("http://localhost:8888/cas/login");
+        final CasConfiguration configuration = new CasConfiguration("https://casserverpac4j.herokuapp.com/login");
+        //final CasConfiguration configuration = new CasConfiguration("http://localhost:8888/cas/login");
         final DefaultLogoutHandler defaultCasLogoutHandler = new DefaultLogoutHandler();
         defaultCasLogoutHandler.setDestroySession(true);
         configuration.setLogoutHandler(defaultCasLogoutHandler);
         final CasProxyReceptor casProxy = new CasProxyReceptor();
-        configuration.setProxyReceptor(casProxy);
+        //configuration.setProxyReceptor(casProxy);
         final CasClient casClient = new CasClient(configuration);
 
         /*final DirectCasClient casClient = new DirectCasClient(configuration);
