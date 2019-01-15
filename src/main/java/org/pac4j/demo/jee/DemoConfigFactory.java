@@ -91,6 +91,14 @@ public class DemoConfigFactory implements ConfigFactory {
 
         // basic auth
         final DirectBasicAuthClient directBasicAuthClient = new DirectBasicAuthClient(new SimpleTestUsernamePasswordAuthenticator());
+        /*final DirectDigestAuthClient directBasicAuthClient = new DirectDigestAuthClient((credentials, context) -> {
+            final CommonProfile profile = new CommonProfile();
+            final DigestCredentials digestCredentials = (DigestCredentials) credentials;
+            profile.setId(digestCredentials.getToken());
+            profile.addAttribute(Pac4jConstants.USERNAME, digestCredentials.getUsername());
+            credentials.setUserProfile(profile);
+        });
+        directBasicAuthClient.setName("DirectBasicAuthClient");*/
 
         final Clients clients = new Clients("http://localhost:8080/callback", oidcClient, saml2Client, facebookClient,
                 twitterClient, formClient, indirectBasicAuthClient, casClient, stravaClient, parameterClient,

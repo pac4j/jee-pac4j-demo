@@ -25,6 +25,11 @@
 <br />
 <a href="forceLogin?client_name=FacebookClient">Force Facebook login</a> (even if already authenticated)<br />
 <br />
+<form action="post/index.jsp?data1=D1" method="POST">
+	<input type="text" name="data2" value="D2" size="50" /><br />
+	<input type="text" name="<%=Pac4jConstants.CSRF_TOKEN%>" value="<%=request.getAttribute(Pac4jConstants.CSRF_TOKEN)%>" size="50" /><br />
+	<input type="submit" value="Post to /post/index.jsp: must be authenticated (by Facebook)" />
+</form>
 <a href="logout?url=<c:url value="/?forcepostlogouturl"/>">local logout</a>
 <br /><br />
 <a href="centralLogout?url=<c:url value="/?forcepostlogouturlafteridp"/>">central logout</a>
