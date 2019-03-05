@@ -4,6 +4,7 @@ import org.pac4j.core.client.Client;
 import org.pac4j.core.config.ConfigSingleton;
 import org.pac4j.core.context.JEEContext;
 import org.pac4j.core.context.Pac4jConstants;
+import org.pac4j.core.exception.TechnicalException;
 import org.pac4j.core.exception.http.HttpAction;
 import org.pac4j.core.http.adapter.JEEHttpActionAdapter;
 import org.pac4j.jee.filter.AbstractConfigFilter;
@@ -26,10 +27,10 @@ public class ForceLoginFilter extends AbstractConfigFilter {
             final FilterChain chain) throws IOException, ServletException {
 
         final JEEContext context = new JEEContext(request, response);
-        final Client client = ConfigSingleton.getConfig().getClients().findClient(request.getParameter(Pac4jConstants.DEFAULT_CLIENT_NAME_PARAMETER));
+        final Client client = ConfigSingleton.getConfig().getClients().findClient(request.getParameter(Pac4jConstants.DEFAULT_CLIENT_NAME_PARAMETER)).orElseThrow(() -> new TechnicalException("No client found"));
         HttpAction action;
         try {
-            action = client.redirect(context);
+            action = (HttpAction) client.redirect(context).get();
         } catch (final HttpAction e) {
             action = e;
         }

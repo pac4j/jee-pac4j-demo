@@ -31,6 +31,7 @@ import org.pac4j.saml.config.SAML2Configuration;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class DemoConfigFactory implements ConfigFactory {
 
@@ -43,7 +44,7 @@ public class DemoConfigFactory implements ConfigFactory {
         //oidcClient.setPreferredJwsAlgorithm(JWSAlgorithm.RS256);
         oidcConfiguration.addCustomParam("prompt", "consent");
         final GoogleOidcClient oidcClient = new GoogleOidcClient(oidcConfiguration);
-        oidcClient.setAuthorizationGenerator((ctx, profile) -> { profile.addRole("ROLE_ADMIN"); return profile; });
+        oidcClient.setAuthorizationGenerator((ctx, profile) -> { profile.addRole("ROLE_ADMIN"); return Optional.of(profile); });
 
         final SAML2Configuration cfg = new SAML2Configuration("resource:samlKeystore.jks",
                                                 "pac4j-demo-passwd",
