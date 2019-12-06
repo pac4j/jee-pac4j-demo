@@ -14,7 +14,7 @@
 <a href="form/index.jsp">Protected url by form authentication: form/index.jsp</a> (use login = pwd)<br />
 <a href="basicauth/index.jsp">Protected url by indirect basic auth: basicauth/index.jsp</a> (use login = pwd)<br />
 <a href="cas/index.jsp">Protected url by CAS: cas/index.jsp</a> (use login = pwd)<br />
-<a href="saml2/index.jsp">Protected url by SAML2: saml2/index.jsp</a> (use testpac4j at gmail.com / Pac4jtest)<br />
+<a href="saml2/index.jsp">Protected url by SAML2: saml2/index.jsp</a> (use one of test accounts listed on IDP)<br />
 <a href="oidc/index.jsp">Protected url by Google OpenID Connect: oidc/index.jsp</a> (use a real account)<br />
 <a href="strava/index.jsp">Protected url by Strava: strava/index.jsp</a> (use a real account)<br />
 <a href="protected/index.jsp">Protected url: protected/index.jsp</a> (won't start any login process)<br />
