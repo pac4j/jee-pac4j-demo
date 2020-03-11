@@ -26,10 +26,6 @@
             <param-name>clients</param-name>
             <param-value>AnonymousClient</param-value>
         </init-param>
-        <init-param>
-            <param-name>authorizers</param-name>
-            <param-value>securityHeaders,csrfToken</param-value>
-        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>indexFilter</filter-name>
@@ -220,7 +216,7 @@
         </init-param>
         <init-param>
             <param-name>authorizers</param-name>
-            <param-value>admin,securityHeaders</param-value>
+            <param-value>admin</param-value>
         </init-param>
     </filter>
     <filter-mapping>
@@ -242,7 +238,7 @@
         </init-param>
         <init-param>
             <param-name>authorizers</param-name>
-            <param-value>custom,securityHeaders</param-value>
+            <param-value>custom</param-value>
         </init-param>
     </filter>
     <filter-mapping>

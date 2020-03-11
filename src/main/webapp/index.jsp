@@ -1,8 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="org.pac4j.core.context.*" %>
+<%@ page import="org.pac4j.core.context.JEEContext" %>
 <%@ page import="org.pac4j.core.profile.ProfileManager" %>
+<%@ page import="org.pac4j.core.util.Pac4jConstants" %>
 <%
-	WebContext context = new JEEContext(request, response);
+	JEEContext context = new JEEContext(request, response);
 	ProfileManager manager = new ProfileManager(context);
 %>
 <h1>index</h1>
