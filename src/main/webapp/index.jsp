@@ -29,7 +29,7 @@
 <form action="post/index.jsp?data1=D1" method="POST">
 	<input type="text" name="data2" value="D2" size="50" /><br />
 	<input type="text" name="<%=Pac4jConstants.CSRF_TOKEN%>" value="<%=request.getAttribute(Pac4jConstants.CSRF_TOKEN)%>" size="50" /><br />
-	<input type="submit" value="Post to /post/index.jsp: must be authenticated (by Facebook)" />
+	<input type="submit" value="Post to /post/index.jsp: must be authenticated (by form login)" />
 </form>
 <a href="logout?url=<c:url value="/?forcepostlogouturl"/>">local logout</a>
 <br /><br />
