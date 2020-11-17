@@ -71,10 +71,6 @@
             <param-name>renewSession</param-name>
             <param-value>true</param-value>
         </init-param>
-        <init-param>
-            <param-name>multiProfile</param-name>
-            <param-value>true</param-value>
-        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>callbackFilter</filter-name>
@@ -106,10 +102,6 @@
         <init-param>
             <param-name>clients</param-name>
             <param-value>DirectBasicAuthClient,ParameterClient</param-value>
-        </init-param>
-        <init-param>
-            <param-name>multiProfile</param-name>
-            <param-value>true</param-value>
         </init-param>
     </filter>
     <filter-mapping>
