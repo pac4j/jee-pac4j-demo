@@ -24,7 +24,7 @@
         <pac4jVersion>5.0.0-SNAPSHOT</pac4jVersion>
         <jee-pac4j.version>6.0.0-SNAPSHOT</jee-pac4j.version>
         <java.version>11</java.version>
-        <spring.version>5.2.9.RELEASE</spring.version>
+        <spring.version>5.3.1</spring.version>
     </properties>
 
     <dependencies>
@@ -156,7 +156,7 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.32.v20200930</version>
+                <version>9.4.34.v20201102</version>
                 <configuration>
                     <webApp>
                         <contextPath>/</contextPath>
