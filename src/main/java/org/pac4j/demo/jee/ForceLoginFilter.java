@@ -7,7 +7,7 @@ import org.pac4j.core.exception.TechnicalException;
 import org.pac4j.core.exception.http.HttpAction;
 import org.pac4j.core.http.adapter.JEEHttpActionAdapter;
 import org.pac4j.core.util.Pac4jConstants;
-import org.pac4j.jee.filter.AbstractConfigFilter;
+import org.pac4j.core.util.filter.AbstractConfigFilter;
 
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;

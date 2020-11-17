@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.pac4j.demo</groupId>
     <artifactId>jee-pac4j-demo</artifactId>
-    <version>5.0.0-SNAPSHOT</version>
+    <version>6.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>jee-pac4j demo</name>
 
@@ -21,9 +21,9 @@
     </repositories>
 
     <properties>
-        <pac4jVersion>4.1.0</pac4jVersion>
-        <jee-pac4j.version>5.0.1-SNAPSHOT</jee-pac4j.version>
-        <java.version>1.8</java.version>
+        <pac4jVersion>5.0.0-SNAPSHOT</pac4jVersion>
+        <jee-pac4j.version>6.0.0-SNAPSHOT</jee-pac4j.version>
+        <java.version>11</java.version>
         <spring.version>5.2.9.RELEASE</spring.version>
     </properties>
 
@@ -60,7 +60,7 @@
         </dependency>
         <dependency>
             <groupId>org.pac4j</groupId>
-            <artifactId>pac4j-saml-opensamlv3</artifactId>
+            <artifactId>pac4j-saml</artifactId>
             <version>${pac4jVersion}</version>
         </dependency>
         <dependency>
@@ -149,8 +149,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <release>${java.version}</release>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>

@@ -1,3 +1,4 @@
+<%@page session="false" %>
 <%@page import="org.pac4j.core.profile.ProfileManager"%>
 <%@ page import="org.pac4j.core.context.JEEContext" %>
 <h1>protected area</h1>
@@ -7,4 +8,4 @@
     JEEContext context = new JEEContext(request, response);
     ProfileManager manager = new ProfileManager(context);
 %>
-profiles: <%=manager.getAll(true)%><br />
+profiles: <%=manager.getProfiles()%><br />
