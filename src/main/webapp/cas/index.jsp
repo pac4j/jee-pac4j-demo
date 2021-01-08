@@ -4,13 +4,14 @@
 <%@ page import="java.util.Optional" %>
 <%@ page import="org.pac4j.cas.profile.CasProxyProfile" %>
 <%@ page import="org.pac4j.core.profile.UserProfile" %>
+<%@ page import="org.pac4j.core.context.session.JEESessionStore" %>
 <h1>protected area</h1>
 <a href="..">Back</a><br />
 <br /><br />
 <%
     JEEContext context = new JEEContext(request, response);
-    ProfileManager manager = new ProfileManager(context);
-    Optional<UserProfile> optProfile = manager.get(true);
+    ProfileManager manager = new ProfileManager(context, JEESessionStore.INSTANCE);
+    Optional<UserProfile> optProfile = manager.getProfile();
     String pt = null;
     if (optProfile.isPresent()) {
         UserProfile profile = optProfile.get();

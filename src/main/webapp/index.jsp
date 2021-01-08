@@ -3,9 +3,10 @@
 <%@ page import="org.pac4j.core.context.JEEContext" %>
 <%@ page import="org.pac4j.core.profile.ProfileManager" %>
 <%@ page import="org.pac4j.core.util.Pac4jConstants" %>
+<%@ page import="org.pac4j.core.context.session.JEESessionStore" %>
 <%
 	JEEContext context = new JEEContext(request, response);
-	ProfileManager manager = new ProfileManager(context);
+	ProfileManager manager = new ProfileManager(context, JEESessionStore.INSTANCE);
 	String sessionId = null;
 	HttpSession httpSession = request.getSession(false);
 	if (httpSession != null) {
