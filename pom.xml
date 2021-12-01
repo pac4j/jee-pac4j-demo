@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.pac4j.demo</groupId>
     <artifactId>jee-pac4j-demo</artifactId>
-    <version>6.0.0-SNAPSHOT</version>
+    <version>6.1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>jee-pac4j demo</name>
 
@@ -21,8 +21,8 @@
     </repositories>
 
     <properties>
-        <pac4jVersion>5.1.5</pac4jVersion>
-        <jee-pac4j.version>6.0.0</jee-pac4j.version>
+        <pac4jVersion>5.2.0-SNAPSHOT</pac4jVersion>
+        <jee-pac4j.version>6.1.0-SNAPSHOT</jee-pac4j.version>
         <java.version>11</java.version>
         <spring.version>5.3.13</spring.version>
     </properties>
@@ -45,7 +45,7 @@
         </dependency>
         <dependency>
             <groupId>org.pac4j</groupId>
-            <artifactId>pac4j-core</artifactId>
+            <artifactId>pac4j-jee</artifactId>
             <version>${pac4jVersion}</version>
         </dependency>
         <dependency>
