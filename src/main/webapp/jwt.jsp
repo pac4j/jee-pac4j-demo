@@ -1,12 +1,12 @@
 <%@page session="false" %>
 <%@page import="org.pac4j.core.profile.ProfileManager"%>
-<%@ page import="org.pac4j.core.context.JEEContext" %>
+<%@ page import="org.pac4j.jee.context.JEEContext" %>
 <%@ page import="org.pac4j.jwt.profile.JwtGenerator" %>
 <%@ page import="org.pac4j.demo.jee.Constants" %>
 <%@ page import="java.util.Optional" %>
 <%@ page import="org.pac4j.jwt.config.signature.SecretSignatureConfiguration" %>
 <%@ page import="org.pac4j.core.profile.UserProfile" %>
-<%@ page import="org.pac4j.core.context.session.JEESessionStore" %>
+<%@ page import="org.pac4j.jee.context.session.JEESessionStore" %>
 <h1>Generate JWT token</h1>
 <a href="..">Back</a><br />
 <br /><br />

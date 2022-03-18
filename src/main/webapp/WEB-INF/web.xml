@@ -149,7 +149,7 @@
     </filter-mapping>
     <filter>
         <filter-name>Saml2MetadataFilter</filter-name>
-        <filter-class>org.pac4j.saml.metadata.Saml2MetadataFilter</filter-class>
+        <filter-class>org.pac4j.jee.saml.metadata.Saml2MetadataFilter</filter-class>
         <init-param>
             <param-name>clientName</param-name>
             <param-value>SAML2Client</param-value>

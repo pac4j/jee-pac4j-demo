@@ -1,14 +1,14 @@
 package org.pac4j.demo.jee;
 
 import org.pac4j.core.client.Client;
-import org.pac4j.core.config.AbstractConfigFilter;
 import org.pac4j.core.config.Config;
-import org.pac4j.core.context.JEEContext;
-import org.pac4j.core.context.session.JEESessionStore;
 import org.pac4j.core.exception.TechnicalException;
 import org.pac4j.core.exception.http.HttpAction;
-import org.pac4j.core.http.adapter.JEEHttpActionAdapter;
 import org.pac4j.core.util.Pac4jConstants;
+import org.pac4j.jee.config.AbstractConfigFilter;
+import org.pac4j.jee.context.JEEContext;
+import org.pac4j.jee.context.session.JEESessionStore;
+import org.pac4j.jee.http.adapter.JEEHttpActionAdapter;
 
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
