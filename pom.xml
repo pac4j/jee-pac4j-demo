@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.pac4j.demo</groupId>
     <artifactId>jee-pac4j-demo</artifactId>
-    <version>7.0.0-SNAPSHOT</version>
+    <version>8.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>jee-pac4j demo</name>
 
@@ -21,21 +21,21 @@
     </repositories>
 
     <properties>
-        <pac4jVersion>5.7.0</pac4jVersion>
-        <jee-pac4j.version>7.1.0</jee-pac4j.version>
-        <java.version>11</java.version>
+        <pac4jVersion>6.0.0-RC4-SNAPSHOT</pac4jVersion>
+        <jee-pac4j.version>8.0.0-SNAPSHOT</jee-pac4j.version>
+        <java.version>17</java.version>
         <spring.version>6.0.3</spring.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.pac4j</groupId>
-            <artifactId>javaee-pac4j</artifactId>
+            <artifactId>jakartaee-pac4j</artifactId>
             <version>${jee-pac4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.pac4j</groupId>
-            <artifactId>pac4j-javaee</artifactId>
+            <artifactId>pac4j-jakartaee</artifactId>
             <version>${pac4jVersion}</version>
         </dependency>
         <dependency>
@@ -119,26 +119,21 @@
             <version>1.4.5</version>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>5.0.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>2.3.3</version>
+            <groupId>jakarta.servlet.jsp</groupId>
+            <artifactId>jakarta.servlet.jsp-api</artifactId>
+            <version>3.0.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.taglibs</groupId>
-            <artifactId>taglibs-standard-spec</artifactId>
-            <version>1.2.5</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.taglibs</groupId>
-            <artifactId>taglibs-standard-impl</artifactId>
-            <version>1.2.5</version>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <version>2.0.0</version>
         </dependency>
     </dependencies>
     <build>
@@ -154,9 +149,14 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version>
+            </plugin>
+            <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.50.v20221201</version>
+                <version>11.0.13</version>
                 <configuration>
                     <webApp>
                         <contextPath>/</contextPath>

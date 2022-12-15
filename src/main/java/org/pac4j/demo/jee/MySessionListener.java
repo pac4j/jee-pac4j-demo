@@ -1,10 +1,9 @@
 package org.pac4j.demo.jee;
 
+import jakarta.servlet.http.HttpSessionEvent;
+import jakarta.servlet.http.HttpSessionListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.servlet.http.HttpSessionEvent;
-import javax.servlet.http.HttpSessionListener;
 
 public class MySessionListener implements HttpSessionListener {
 
