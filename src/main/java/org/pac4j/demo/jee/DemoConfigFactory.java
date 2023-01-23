@@ -11,7 +11,6 @@ import org.pac4j.core.client.direct.AnonymousClient;
 import org.pac4j.core.config.Config;
 import org.pac4j.core.config.ConfigFactory;
 import org.pac4j.core.logout.handler.DefaultLogoutHandler;
-
 import org.pac4j.core.matching.matcher.PathMatcher;
 import org.pac4j.http.client.direct.DirectBasicAuthClient;
 import org.pac4j.http.client.direct.ParameterClient;
@@ -45,7 +44,7 @@ public class DemoConfigFactory implements ConfigFactory {
         //oidcClient.setPreferredJwsAlgorithm(JWSAlgorithm.RS256);
         oidcConfiguration.addCustomParam("prompt", "consent");
         final GoogleOidcClient oidcClient = new GoogleOidcClient(oidcConfiguration);
-        oidcClient.setAuthorizationGenerator((ctx, session, profile) -> { profile.addRole("ROLE_ADMIN"); return Optional.of(profile); });
+        oidcClient.setAuthorizationGenerator((ctx, profile) -> { profile.addRole("ROLE_ADMIN"); return Optional.of(profile); });
 
         final SAML2Configuration cfg = new SAML2Configuration("resource:samlKeystore.jks",
                                                 "pac4j-demo-passwd",
