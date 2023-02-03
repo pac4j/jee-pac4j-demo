@@ -10,7 +10,7 @@ import org.pac4j.core.client.Clients;
 import org.pac4j.core.client.direct.AnonymousClient;
 import org.pac4j.core.config.Config;
 import org.pac4j.core.config.ConfigFactory;
-import org.pac4j.core.logout.handler.DefaultLogoutHandler;
+import org.pac4j.core.logout.handler.DefaultSessionLogoutHandler;
 import org.pac4j.core.matching.matcher.PathMatcher;
 import org.pac4j.http.client.direct.DirectBasicAuthClient;
 import org.pac4j.http.client.direct.ParameterClient;
@@ -65,9 +65,9 @@ public class DemoConfigFactory implements ConfigFactory {
         // CAS
         final CasConfiguration configuration = new CasConfiguration("https://casserverpac4j.herokuapp.com/login");
         //final CasConfiguration configuration = new CasConfiguration("http://localhost:8888/cas/login");
-        final DefaultLogoutHandler defaultCasLogoutHandler = new DefaultLogoutHandler();
+        final DefaultSessionLogoutHandler defaultCasLogoutHandler = new DefaultSessionLogoutHandler();
         defaultCasLogoutHandler.setDestroySession(true);
-        configuration.setLogoutHandler(defaultCasLogoutHandler);
+        configuration.setSessionLogoutHandler(defaultCasLogoutHandler);
         final CasProxyReceptor casProxy = new CasProxyReceptor();
         //configuration.setProxyReceptor(casProxy);
         final CasClient casClient = new CasClient(configuration);
