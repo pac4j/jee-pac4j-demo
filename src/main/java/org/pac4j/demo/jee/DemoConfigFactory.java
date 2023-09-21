@@ -35,6 +35,8 @@ import java.util.Optional;
 
 public class DemoConfigFactory implements ConfigFactory {
 
+    public static Config CONFIG_INSTANCE;
+
     @Override
     public Config build(final Object... parameters) {
         final OidcConfiguration oidcConfiguration = new OidcConfiguration();
@@ -112,6 +114,9 @@ public class DemoConfigFactory implements ConfigFactory {
         config.addAuthorizer("mustBeAnon", new IsAnonymousAuthorizer("/?mustBeAnon"));
         config.addAuthorizer("mustBeAuth", new IsAuthenticatedAuthorizer("/?mustBeAuth"));
         config.addMatcher("excludedPath", new PathMatcher().excludeRegex("^/facebook/notprotected\\.jsp$"));
+
+        CONFIG_INSTANCE = config;
+
         return config;
     }
 }
