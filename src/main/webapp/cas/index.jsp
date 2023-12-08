@@ -10,7 +10,7 @@
 <br /><br />
 <%
     JEEContext context = new JEEContext(request, response);
-    ProfileManager manager = new ProfileManager(context, JEESessionStore.INSTANCE);
+    ProfileManager manager = new ProfileManager(context, new JEESessionStore());
     Optional<UserProfile> optProfile = manager.getProfile();
     String pt = null;
     if (optProfile.isPresent()) {

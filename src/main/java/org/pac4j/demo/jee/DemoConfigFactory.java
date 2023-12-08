@@ -67,9 +67,6 @@ public class DemoConfigFactory implements ConfigFactory {
         // CAS
         final CasConfiguration configuration = new CasConfiguration("https://casserverpac4j.herokuapp.com/login");
         //final CasConfiguration configuration = new CasConfiguration("http://localhost:8888/cas/login");
-        final DefaultSessionLogoutHandler defaultCasLogoutHandler = new DefaultSessionLogoutHandler();
-        defaultCasLogoutHandler.setDestroySession(true);
-        configuration.setSessionLogoutHandler(defaultCasLogoutHandler);
         final CasProxyReceptor casProxy = new CasProxyReceptor();
         //configuration.setProxyReceptor(casProxy);
         final CasClient casClient = new CasClient(configuration);
@@ -114,6 +111,10 @@ public class DemoConfigFactory implements ConfigFactory {
         config.addAuthorizer("mustBeAnon", new IsAnonymousAuthorizer("/?mustBeAnon"));
         config.addAuthorizer("mustBeAuth", new IsAuthenticatedAuthorizer("/?mustBeAuth"));
         config.addMatcher("excludedPath", new PathMatcher().excludeRegex("^/facebook/notprotected\\.jsp$"));
+
+        final DefaultSessionLogoutHandler defaultCasLogoutHandler = new DefaultSessionLogoutHandler();
+        defaultCasLogoutHandler.setDestroySession(true);
+        config.setSessionLogoutHandler(defaultCasLogoutHandler);
 
         CONFIG_INSTANCE = config;
 

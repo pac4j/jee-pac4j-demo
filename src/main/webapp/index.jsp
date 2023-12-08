@@ -6,7 +6,7 @@
 <%@ page import="org.pac4j.jee.context.session.JEESessionStore" %>
 <%
 	JEEContext context = new JEEContext(request, response);
-	ProfileManager manager = new ProfileManager(context, JEESessionStore.INSTANCE);
+	ProfileManager manager = new ProfileManager(context, new JEESessionStore());
 	String sessionId = null;
 	HttpSession httpSession = request.getSession(false);
 	if (httpSession != null) {

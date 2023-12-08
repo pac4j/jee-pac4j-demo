@@ -31,7 +31,7 @@ public class ForceLoginFilter extends AbstractConfigFilter {
         final Client client = getSharedConfig().getClients().findClient(request.getParameter(Pac4jConstants.DEFAULT_CLIENT_NAME_PARAMETER)).orElseThrow(() -> new TechnicalException("No client found"));
         HttpAction action;
         try {
-            action = client.getRedirectionAction(new CallContext(context, JEESessionStore.INSTANCE)).get();
+            action = client.getRedirectionAction(new CallContext(context, new JEESessionStore())).get();
         } catch (final HttpAction e) {
             action = e;
         }
