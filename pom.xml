@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.pac4j.demo</groupId>
     <artifactId>jee-pac4j-demo</artifactId>
-    <version>8.0.0-SNAPSHOT</version>
+    <version>8.0.3-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>jee-pac4j demo</name>
 
@@ -21,8 +21,8 @@
     </repositories>
 
     <properties>
-        <pac4jVersion>6.2.2</pac4jVersion>
-        <jee-pac4j.version>8.0.1</jee-pac4j.version>
+        <pac4jVersion>6.5.8</pac4jVersion>
+        <jee-pac4j.version>8.0.3</jee-pac4j.version>
         <java.version>17</java.version>
         <spring.version>6.2.11</spring.version>
     </properties>
@@ -65,11 +65,6 @@
         </dependency>
         <dependency>
             <groupId>org.pac4j</groupId>
-            <artifactId>pac4j-gae</artifactId>
-            <version>${pac4jVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.pac4j</groupId>
             <artifactId>pac4j-oidc</artifactId>
             <version>${pac4jVersion}</version>
         </dependency>
@@ -101,11 +96,6 @@
         <dependency>
             <groupId>org.pac4j</groupId>
             <artifactId>pac4j-kerberos</artifactId>
-            <version>${pac4jVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.pac4j</groupId>
-            <artifactId>pac4j-couch</artifactId>
             <version>${pac4jVersion}</version>
         </dependency>
         <dependency>
